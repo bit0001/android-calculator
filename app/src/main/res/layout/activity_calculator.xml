@@ -67,7 +67,8 @@
                 android:textAllCaps="false"
                 android:onClick="performOperation"
                 android:text="sin"
-                android:backgroundTint="?android:attr/colorEdgeEffect" />
+                android:backgroundTint="?android:attr/colorEdgeEffect"
+                android:textColor="@color/light_gray" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -77,7 +78,8 @@
                 android:textAllCaps="false"
                 android:onClick="performOperation"
                 android:text="cos"
-                android:backgroundTint="?android:attr/colorEdgeEffect" />
+                android:backgroundTint="?android:attr/colorEdgeEffect"
+                android:textColor="@color/light_gray" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -87,7 +89,8 @@
                 android:onClick="performOperation"
                 android:textAllCaps="false"
                 android:text="tan"
-                android:backgroundTint="?android:attr/colorEdgeEffect" />
+                android:backgroundTint="?android:attr/colorEdgeEffect"
+                android:textColor="@color/light_gray" />
 
             <Button
                 android:layout_width="wrap_content"
