@@ -12,7 +12,7 @@
     tools:context="com.mathsistor.m.calculator.CalculatorActivity">
 
     <TextView
-        android:id="@+id/display"
+        android:id="@+id/result_display"
         android:gravity="right"
         android:text="0"
         android:textColor="@android:color/white"

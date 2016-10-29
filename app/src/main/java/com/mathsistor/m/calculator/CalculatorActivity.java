@@ -19,7 +19,7 @@ public class CalculatorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        display = (TextView) findViewById(R.id.display);
+        display = (TextView) findViewById(R.id.result_display);
 
         clear();
     }
