@@ -11,6 +11,7 @@ import android.widget.TextView;
 public class CalculatorActivity extends AppCompatActivity {
 
     private boolean userIsInTheMiddleOfTyping;
+    private boolean floatingPointIsDisplayed;
     private TextView display;
     private CalculatorBrain brain;
 
@@ -27,6 +28,7 @@ public class CalculatorActivity extends AppCompatActivity {
         brain = new CalculatorBrain();
         setDisplayValue(brain.getResult());
         userIsInTheMiddleOfTyping = false;
+        floatingPointIsDisplayed = false;
     }
 
     public void touchDigit(View view) {
@@ -46,6 +48,7 @@ public class CalculatorActivity extends AppCompatActivity {
         if (userIsInTheMiddleOfTyping) {
             brain.setOperand(getDisplayValue());
             userIsInTheMiddleOfTyping = false;
+            floatingPointIsDisplayed = false;
         }
 
         String mathSymbol = ((Button) view).getText().toString();
@@ -64,5 +67,17 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void clear(View view) {
         clear();
+    }
+
+    public void addDecimalPoint(View view) {
+        if (!floatingPointIsDisplayed) {
+            if (userIsInTheMiddleOfTyping) {
+                display.setText(((int) getDisplayValue()) + ".");
+            } else {
+                display.setText("0.");
+            }
+            floatingPointIsDisplayed = true;
+            userIsInTheMiddleOfTyping = true;
+        }
     }
 }
