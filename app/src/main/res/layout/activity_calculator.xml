@@ -126,7 +126,7 @@
                 android:textAllCaps="false"
                 android:onClick="performOperation"
                 android:text="π"
-                android:backgroundTint="?android:attr/textColorSearchUrl" />
+                android:backgroundTint="@color/constant" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -187,7 +187,7 @@
                 android:textAllCaps="false"
                 android:onClick="performOperation"
                 android:text="e"
-                android:backgroundTint="?android:attr/textColorSearchUrl" />
+                android:backgroundTint="@color/constant" />
 
             <Button
                 android:layout_width="wrap_content"

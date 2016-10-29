@@ -5,4 +5,5 @@
     <color name="colorAccent">#ff4081</color>
     <color name="powers">#cab113</color>
     <color name="parenthesis">#1c8f69</color>
+    <color name="constant">#7fa87f</color>
 </resources>
