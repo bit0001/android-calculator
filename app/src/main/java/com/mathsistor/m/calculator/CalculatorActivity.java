@@ -10,15 +10,23 @@ import android.widget.TextView;
 
 public class CalculatorActivity extends AppCompatActivity {
 
-    private boolean userIsInTheMiddleOfTyping = false;
+    private boolean userIsInTheMiddleOfTyping;
     private TextView display;
-    private CalculatorBrain brain = new CalculatorBrain();
+    private CalculatorBrain brain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
         display = (TextView) findViewById(R.id.display);
+
+        clear();
+    }
+
+    private void clear() {
+        brain = new CalculatorBrain();
+        setDisplayValue(brain.getResult());
+        userIsInTheMiddleOfTyping = false;
     }
 
     public void touchDigit(View view) {
@@ -55,8 +63,6 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void clear(View view) {
-        brain = new CalculatorBrain();
-        setDisplayValue(brain.getResult());
-        userIsInTheMiddleOfTyping = false;
+        clear();
     }
 }
