@@ -21,6 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         android:textSize="38sp" />
 
     <TextView
@@ -31,6 +33,8 @@
         android:background="@android:color/holo_blue_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         android:textSize="38sp" />
 
     <LinearLayout
@@ -87,7 +91,9 @@
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:onClick="clear"
-                android:text="C" />
+                android:text="C"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 
@@ -138,8 +144,11 @@
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:textSize="22sp"
-                android:text="←" />
+                android:textSize="25sp"
+                android:text="←"
+                android:backgroundTint="?attr/colorAccent"
+                android:textColor="@android:color/background_light"
+                android:textStyle="normal|bold" />
 
         </LinearLayout>
 
@@ -192,7 +201,9 @@
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:onClick="performOperation"
-                android:text="×" />
+                android:text="×"
+                android:backgroundTint="@android:color/holo_purple"
+                android:textColor="@android:color/background_light" />
 
         </LinearLayout>
 
@@ -241,7 +252,9 @@
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:onClick="performOperation"
-                android:text="÷" />
+                android:text="÷"
+                android:backgroundTint="@android:color/holo_purple"
+                android:textColor="@android:color/background_light" />
 
         </LinearLayout>
 
@@ -290,7 +303,9 @@
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:onClick="performOperation"
-                android:text="+" />
+                android:text="+"
+                android:backgroundTint="@android:color/holo_purple"
+                android:textColor="@android:color/background_light" />
 
         </LinearLayout>
 
@@ -338,7 +353,9 @@
                 android:textSize="25sp"
                 android:onClick="performOperation"
                 android:text="−"
-                android:id="@+id/button" />
+                android:id="@+id/button"
+                android:backgroundTint="@android:color/holo_purple"
+                android:textColor="@android:color/background_light" />
 
         </LinearLayout>
 
@@ -388,7 +405,9 @@
                 android:textSize="25sp"
                 android:onClick="performOperation"
                 android:text="="
-                android:id="@+id/button2" />
+                android:id="@+id/button2"
+                android:backgroundTint="@android:color/holo_purple"
+                android:textColor="@android:color/background_light" />
 
         </LinearLayout>
 
