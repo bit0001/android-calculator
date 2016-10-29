@@ -53,4 +53,10 @@ public class CalculatorActivity extends AppCompatActivity {
     public void setDisplayValue(double displayValue) {
         display.setText(String.valueOf(displayValue));
     }
+
+    public void clear(View view) {
+        brain = new CalculatorBrain();
+        setDisplayValue(brain.getResult());
+        userIsInTheMiddleOfTyping = false;
+    }
 }
