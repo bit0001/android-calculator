@@ -35,6 +35,7 @@ public class CalculatorBrain {
 
         operations.put("\u03c0", Operation.PI_CONSTANT);
         operations.put("e", Operation.E_CONSTANT);
+        operations.put("+/-", Operation.UNARY_NEGATIVE);
         operations.put("\u221a", Operation.SQUARE_ROOT);
 
         operations.put("x" + "\u00b2", Operation.SQUARE);

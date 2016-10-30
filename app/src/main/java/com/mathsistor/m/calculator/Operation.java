@@ -11,6 +11,7 @@ import java.util.function.DoubleUnaryOperator;
 public enum Operation {
     PI_CONSTANT(Math.PI),
     E_CONSTANT(Math.E),
+    UNARY_NEGATIVE(a -> -a),
     SQUARE_ROOT(Math::sqrt),
     X_POWER_MINUS_1(a -> 1 / a),
     SQUARE(a -> a * a),
