@@ -14,6 +14,7 @@ public enum Operation {
     SQUARE(a -> a * a),
     SIN(Math::sin),
     COS(Math::cos),
+    TAN(Math::tan),
     ADDITION((a, b) -> a + b),
     SUBTRACTION((a, b) -> a - b),
     MULTIPLICATION((a, b) -> a * b),

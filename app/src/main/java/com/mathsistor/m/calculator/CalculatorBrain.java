@@ -24,6 +24,7 @@ public class CalculatorBrain {
         operations.put("x" + "\u00b2", Operation.SQUARE);
         operations.put("sin", Operation.SIN);
         operations.put("cos", Operation.COS);
+        operations.put("tan", Operation.TAN);
         operations.put("+", Operation.ADDITION);
         operations.put("\u2212", Operation.SUBTRACTION);
         operations.put("\u00d7", Operation.MULTIPLICATION);
@@ -50,6 +51,7 @@ public class CalculatorBrain {
                 case SQUARE:
                 case SIN:
                 case COS:
+                case TAN:
                     accumulator = operation.getUnaryOperator().applyAsDouble(accumulator);
                     break;
                 case ADDITION:
