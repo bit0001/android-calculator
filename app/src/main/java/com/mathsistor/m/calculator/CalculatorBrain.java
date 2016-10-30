@@ -87,6 +87,7 @@ public class CalculatorBrain {
                 case E_CONSTANT:
                     accumulator = operation.getConstant();
                     break;
+                case UNARY_NEGATIVE:
                 case X_POWER_MINUS_1:
                 case SQUARE_ROOT:
                 case SQUARE:
@@ -122,6 +123,22 @@ public class CalculatorBrain {
         Operation operation = operations.get(operator);
 
         switch (operation) {
+            case UNARY_NEGATIVE:
+                if (isPartialResult()) {
+                    if (previousAppend != null) {
+                        previousAppend = "(" + "-" + previousAppend + ")";
+                        description = baseDescription + previousAppend;
+                    } else {
+                        baseDescription = description;
+                        previousAppend = "(" + "-" + getAccumulatorString() + ")";
+                        description += previousAppend;
+                    }
+                } else {
+                    if (!description.equals("")) {
+                        description = "-" + "(" + description + ")";
+                    }
+                }
+                break;
             case SQUARE_ROOT:
             case SIN:
             case COS:
@@ -188,7 +205,12 @@ public class CalculatorBrain {
             case MULTIPLICATION:
             case DIVISION:
                 if (isPartialResult()) {
-                    description += getAccumulatorString() + operator;
+                    if (previousAppend == null) {
+                        description += getAccumulatorString() + operator;
+                    } else {
+                        description += operator;
+                        previousAppend = null;
+                    }
                 } else {
                     if (description.equals("")) {
                         description = getAccumulatorString() + operator;
@@ -199,12 +221,17 @@ public class CalculatorBrain {
                 break;
             case N_POWER:
                 if (isPartialResult()) {
-                    description += "(" + getAccumulatorString() + ")^";
+                    if (previousAppend == null) {
+                        description = "(" + description +  getAccumulatorString() + ")^";
+                    } else {
+                        description = "(" + description + ")^";
+                        previousAppend = null;
+                    }
                 } else {
                     if (description.equals("")) {
                         description = "(" + getAccumulatorString() + ")^";
                     } else {
-                        description += "(" + operator + ")^";
+                        description = "(" + description + ")^";
                     }
                 }
                 break;
@@ -219,7 +246,6 @@ public class CalculatorBrain {
                 previousAppend = null;
                 break;
         }
-
     }
 
     @NonNull
