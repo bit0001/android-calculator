@@ -26,7 +26,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private void clear() {
         brain = new CalculatorBrain();
-        setDisplayValue(brain.getResult());
+        initializeDisplays();
         userIsInTheMiddleOfTyping = false;
         floatingPointIsDisplayed = false;
     }
@@ -63,6 +63,9 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void setDisplayValue(double displayValue) {
         display.setText(String.valueOf(displayValue));
+    public void initializeDisplays() {
+        result_display.setText("0");
+        operation_display.setText("0");
     }
 
     public void clear(View view) {
