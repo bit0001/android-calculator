@@ -6,6 +6,8 @@ import android.support.annotation.BoolRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.HashMap;
 
 /**
@@ -231,8 +233,17 @@ public class CalculatorBrain {
         } else if (accumulator == Math.E) {
             accumulatorString = "e";
         } else {
-            accumulatorString = String.valueOf(accumulator);
+            double decimalPart = accumulator - Math.floor(accumulator);
+
+            if (Math.abs(decimalPart) < 0.000001) {
+                return String.valueOf((int) accumulator);
+            }
+
+            NumberFormat formatter = new DecimalFormat("#0.######");
+
+            accumulatorString = formatter.format(accumulator);
         }
+
         return accumulatorString;
     }
 

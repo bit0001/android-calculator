@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class CalculatorActivity extends AppCompatActivity {
 
     private boolean userIsInTheMiddleOfTyping;
@@ -53,7 +56,20 @@ public class CalculatorActivity extends AppCompatActivity {
         String mathSymbol = ((Button) view).getText().toString();
 
         brain.performOperation(mathSymbol);
-        setDisplays(brain.getResult());
+        setDisplays(getResultFormatted());
+    }
+
+    private String getResultFormatted() {
+        double result = brain.getResult();
+        double decimalPart = result - Math.floor(result);
+
+        if (Math.abs(decimalPart) < 0.000001) {
+            return String.valueOf((int) result);
+        }
+
+        NumberFormat formatter = new DecimalFormat("#0.######");
+
+        return formatter.format(brain.getResult());
     }
 
     public double getDisplayValue() {
@@ -65,8 +81,8 @@ public class CalculatorActivity extends AppCompatActivity {
         operation_display.setText("0");
     }
 
-    public void setDisplays(double displayValue) {
-        result_display.setText(String.valueOf(displayValue));
+    public void setDisplays(String displayValue) {
+        result_display.setText(displayValue);
         operation_display.setText(brain.getDescription() + (brain.isPartialResult() ? "..." : "="));
     }
 
