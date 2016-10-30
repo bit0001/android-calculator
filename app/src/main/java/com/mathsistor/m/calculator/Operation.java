@@ -18,6 +18,7 @@ public enum Operation {
     EXP(Math::exp),
     TEN_POWER(a -> Math.pow(10, a)),
     LOG10(Math::log10),
+    LN(Math::log),
     ADDITION((a, b) -> a + b),
     SUBTRACTION((a, b) -> a - b),
     MULTIPLICATION((a, b) -> a * b),

@@ -28,6 +28,7 @@ public class CalculatorBrain {
         operations.put("e" + "\u02e3", Operation.EXP);
         operations.put("10" + "\u02e3", Operation.TEN_POWER);
         operations.put("log", Operation.LOG10);
+        operations.put("ln", Operation.LN);
         operations.put("+", Operation.ADDITION);
         operations.put("\u2212", Operation.SUBTRACTION);
         operations.put("\u00d7", Operation.MULTIPLICATION);
@@ -58,6 +59,7 @@ public class CalculatorBrain {
                 case EXP:
                 case TEN_POWER:
                 case LOG10:
+                case LN:
                     accumulator = operation.getUnaryOperator().applyAsDouble(accumulator);
                     break;
                 case ADDITION:
