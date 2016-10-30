@@ -46,8 +46,13 @@ public class CalculatorBrain {
         operations.put("sin", Operation.SIN);
         operations.put("cos", Operation.COS);
         operations.put("tan", Operation.TAN);
+
         operations.put("e" + "\u02e3", Operation.EXP);
+        symbols.put("e" + "\u02e3", "e^");
+
         operations.put("10" + "\u02e3", Operation.TEN_POWER);
+        symbols.put("10" + "\u02e3", "10^");
+
         operations.put("log", Operation.LOG10);
         operations.put("ln", Operation.LN);
         operations.put("+", Operation.ADDITION);
@@ -162,18 +167,18 @@ public class CalculatorBrain {
             case EXP:
                 if (isPartialResult()) {
                     if (previousAppend != null) {
-                        previousAppend = operator.substring(0, operator.length() - 1) + "^(" + previousAppend + ")";
+                        previousAppend = getSymbol(operator) + "(" + previousAppend + ")";
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = operator.substring(0, operator.length() - 1) + "^(" + getAccumulatorString() + ")";
+                        previousAppend = getSymbol(operator) + "(" + getAccumulatorString() + ")";
                         description += previousAppend;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = operator.substring(0, operator.length() - 1) + "^(" + getAccumulatorString() + ")";
+                        description = getSymbol(operator) + "(" + getAccumulatorString() + ")";
                     } else {
-                        description = operator.substring(0, operator.length() - 1) + "^(" + description + ")";
+                        description = getSymbol(operator) + "(" + description + ")";
                     }
                 }
                 break;
