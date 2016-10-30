@@ -12,14 +12,14 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private boolean userIsInTheMiddleOfTyping;
     private boolean floatingPointIsDisplayed;
-    private TextView display;
+    private TextView result_display;
     private CalculatorBrain brain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
-        display = (TextView) findViewById(R.id.result_display);
+        result_display = (TextView) findViewById(R.id.result_display);
 
         clear();
     }
@@ -33,12 +33,12 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void touchDigit(View view) {
         String digit = ((Button) view).getText().toString();
-        String textCurrentlyInDisplay = display.getText().toString();
+        String textCurrentlyInDisplay = result_display.getText().toString();
 
         if (userIsInTheMiddleOfTyping) {
-            display.setText(textCurrentlyInDisplay + digit);
+            result_display.setText(textCurrentlyInDisplay + digit);
         } else {
-            display.setText(digit);
+            result_display.setText(digit);
         }
         userIsInTheMiddleOfTyping = true;
     }
@@ -58,7 +58,7 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public double getDisplayValue() {
-        return Double.parseDouble(display.getText().toString());
+        return Double.parseDouble(result_display.getText().toString());
     }
 
     public void setDisplayValue(double displayValue) {
@@ -72,9 +72,9 @@ public class CalculatorActivity extends AppCompatActivity {
     public void addDecimalPoint(View view) {
         if (!floatingPointIsDisplayed) {
             if (userIsInTheMiddleOfTyping) {
-                display.setText(((int) getDisplayValue()) + ".");
+                result_display.setText(((int) getDisplayValue()) + ".");
             } else {
-                display.setText("0.");
+                result_display.setText("0.");
             }
             floatingPointIsDisplayed = true;
             userIsInTheMiddleOfTyping = true;
