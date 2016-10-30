@@ -28,7 +28,7 @@
     <TextView
         android:id="@+id/operation_display"
         android:gravity="right"
-        android:text="0"
+        android:text=""
         android:textColor="@android:color/white"
         android:background="@android:color/holo_blue_dark"
         android:layout_width="match_parent"

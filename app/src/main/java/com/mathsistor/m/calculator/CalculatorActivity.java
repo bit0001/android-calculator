@@ -78,7 +78,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void initializeDisplays() {
         result_display.setText("0");
-        operation_display.setText("0");
+        operation_display.setText("");
     }
 
     public void setDisplays(String displayValue) {
