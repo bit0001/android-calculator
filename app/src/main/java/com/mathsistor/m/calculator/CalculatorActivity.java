@@ -14,12 +14,14 @@ public class CalculatorActivity extends AppCompatActivity {
     private boolean floatingPointIsDisplayed;
     private TextView result_display;
     private CalculatorBrain brain;
+    private TextView operation_display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
         result_display = (TextView) findViewById(R.id.result_display);
+        operation_display = (TextView) findViewById(R.id.operation_display);
 
         clear();
     }
@@ -54,18 +56,21 @@ public class CalculatorActivity extends AppCompatActivity {
         String mathSymbol = ((Button) view).getText().toString();
 
         brain.performOperation(mathSymbol);
-        setDisplayValue(brain.getResult());
+        setDisplays(brain.getResult());
     }
 
     public double getDisplayValue() {
         return Double.parseDouble(result_display.getText().toString());
     }
 
-    public void setDisplayValue(double displayValue) {
-        display.setText(String.valueOf(displayValue));
     public void initializeDisplays() {
         result_display.setText("0");
         operation_display.setText("0");
+    }
+
+    public void setDisplays(double displayValue) {
+        result_display.setText(String.valueOf(displayValue));
+        operation_display.setText(brain.getDescription() + (brain.isPartialResult() ? "..." : "="));
     }
 
     public void clear(View view) {

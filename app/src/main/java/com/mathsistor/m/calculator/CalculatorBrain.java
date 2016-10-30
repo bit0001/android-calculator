@@ -2,6 +2,8 @@ package com.mathsistor.m.calculator;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.support.annotation.BoolRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 
 import java.util.HashMap;
@@ -15,6 +17,13 @@ public class CalculatorBrain {
     private double accumulator;
     private static HashMap<String, Operation> operations;
     private PendingBinaryOperationInfo pending;
+    private String description;
+    private String previousAppend;
+    private String baseDescription;
+
+    CalculatorBrain() {
+        this.description = "";
+    }
 
     static {
         operations =  new HashMap<>();
@@ -40,6 +49,9 @@ public class CalculatorBrain {
 
     public void setOperand(double operand) {
         accumulator = operand;
+        if (!isPartialResult()) {
+            this.description = "";
+        }
     }
 
     @TargetApi(Build.VERSION_CODES.N)
@@ -48,6 +60,8 @@ public class CalculatorBrain {
         Operation operation = operations.get(symbol);
 
         if (operation != null) {
+            setDescription(symbol);
+
             switch (operation) {
                 case PI_CONSTANT:
                 case E_CONSTANT:
@@ -80,6 +94,114 @@ public class CalculatorBrain {
 
     }
 
+    private void setDescription(String symbol) {
+        Operation operation = operations.get(symbol);
+
+        switch (operation) {
+            case SQUARE_ROOT:
+            case SIN:
+            case COS:
+            case TAN:
+            case LOG10:
+            case LN:
+                if (isPartialResult()) {
+                    if (previousAppend != null) {
+                        previousAppend = symbol + "(" + previousAppend + ")";
+                        description = baseDescription + previousAppend;
+                    } else {
+                        baseDescription = description;
+                        previousAppend = symbol + "(" + getAccumulatorString() + ")";
+                        description += previousAppend;
+                    }
+                } else {
+                    if (description.equals("")) {
+                        description = symbol + "(" + getAccumulatorString() + ")";
+                    } else {
+                        description = symbol + "(" + description + ")";
+                    }
+                }
+                break;
+            case SQUARE:
+                if (isPartialResult()) {
+                    if (previousAppend != null) {
+                        previousAppend = "(" + previousAppend + ")" + "\u00b2";
+                        description = baseDescription + previousAppend;
+                    } else {
+                        baseDescription = description;
+                        previousAppend = "(" + getAccumulatorString() + ")" + "\u00b2";
+                        description += previousAppend;
+                    }
+                } else {
+                    if (description.equals("")) {
+                        description = "(" + getAccumulatorString() + ")" + "\u00b2";
+                    } else {
+                        description = "(" + description + ")" + "\u00b2";
+                    }
+                }
+                break;
+            case TEN_POWER:
+            case EXP:
+                if (isPartialResult()) {
+                    if (previousAppend != null) {
+                        previousAppend = symbol.substring(0, symbol.length() - 1) + "^(" + previousAppend + ")";
+                        description = baseDescription + previousAppend;
+                    } else {
+                        baseDescription = description;
+                        previousAppend = symbol.substring(0, symbol.length() - 1) + "^(" + getAccumulatorString() + ")";
+                        description += previousAppend;
+                    }
+                } else {
+                    if (description.equals("")) {
+                        description = symbol.substring(0, symbol.length() - 1) + "^(" + getAccumulatorString() + ")";
+                    } else {
+                        description = symbol.substring(0, symbol.length() - 1) + "^(" + description + ")";
+                    }
+                }
+                break;
+            case ADDITION:
+            case SUBTRACTION:
+            case MULTIPLICATION:
+            case DIVISION:
+                if (isPartialResult()) {
+                    description += getAccumulatorString() + symbol;
+                } else {
+                    if (description.equals("")) {
+                        description = getAccumulatorString() + symbol;
+                    } else {
+                        description += symbol;
+                    }
+                }
+                break;
+            case N_POWER:
+                description = "(" + description + ")" + "^";
+                break;
+            case EQUALS:
+                if (!isPartialResult()) {
+                    return;
+                }
+
+                if (previousAppend == null) {
+                    description += getAccumulatorString();
+                }
+                previousAppend = null;
+                break;
+        }
+
+    }
+
+    @NonNull
+    private String getAccumulatorString() {
+        String accumulatorString;
+        if (accumulator == Math.PI) {
+            accumulatorString = "\u03c0";
+        } else if (accumulator == Math.E) {
+            accumulatorString = "e";
+        } else {
+            accumulatorString = String.valueOf(accumulator);
+        }
+        return accumulatorString;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void executePendingBinaryOperation() {
         if (pending != null) {
@@ -90,5 +212,13 @@ public class CalculatorBrain {
 
     public double getResult() {
         return accumulator;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isPartialResult() {
+        return pending != null;
     }
 }
