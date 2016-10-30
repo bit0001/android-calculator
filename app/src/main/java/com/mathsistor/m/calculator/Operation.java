@@ -23,6 +23,7 @@ public enum Operation {
     SUBTRACTION((a, b) -> a - b),
     MULTIPLICATION((a, b) -> a * b),
     DIVISION((a, b) -> a / b),
+    N_POWER(Math::pow),
     EQUALS;
 
     private double constant;
