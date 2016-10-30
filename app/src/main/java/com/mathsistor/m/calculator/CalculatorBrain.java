@@ -18,6 +18,8 @@ public class CalculatorBrain {
 
     private double accumulator;
     private static HashMap<String, Operation> operations;
+    private static HashMap<String, String> symbols;
+
     private PendingBinaryOperationInfo pending;
     private String description;
     private String previousAppend;
@@ -29,10 +31,18 @@ public class CalculatorBrain {
 
     static {
         operations =  new HashMap<>();
+        symbols = new HashMap<>();
+
         operations.put("\u03c0", Operation.PI_CONSTANT);
         operations.put("e", Operation.E_CONSTANT);
         operations.put("\u221a", Operation.SQUARE_ROOT);
+
         operations.put("x" + "\u00b2", Operation.SQUARE);
+        symbols.put("x" + "\u00b2", "\u00b2");
+
+        operations.put("x" + "\u207b" + "\u00b9", Operation.X_POWER_MINUS_1);
+        symbols.put("x" + "\u207b" + "\u00b9", "\u207b" + "\u00b9");
+
         operations.put("sin", Operation.SIN);
         operations.put("cos", Operation.COS);
         operations.put("tan", Operation.TAN);
@@ -46,7 +56,6 @@ public class CalculatorBrain {
         operations.put("\u00f7", Operation.DIVISION);
         operations.put("x" + "\u02b8", Operation.N_POWER);
         operations.put("\u02b8" + "\u221a" + "x", Operation.N_ROOT);
-        operations.put("x" + "\u207b" + "\u00b9", Operation.X_POWER_MINUS_1);
         operations.put("rand", Operation.RANDOM);
         operations.put("=", Operation.EQUALS);
     }
@@ -103,8 +112,8 @@ public class CalculatorBrain {
 
     }
 
-    private void setDescription(String symbol) {
-        Operation operation = operations.get(symbol);
+    private void setDescription(String operator) {
+        Operation operation = operations.get(operator);
 
         switch (operation) {
             case SQUARE_ROOT:
@@ -115,54 +124,54 @@ public class CalculatorBrain {
             case LN:
                 if (isPartialResult()) {
                     if (previousAppend != null) {
-                        previousAppend = symbol + "(" + previousAppend + ")";
+                        previousAppend = operator + "(" + previousAppend + ")";
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = symbol + "(" + getAccumulatorString() + ")";
+                        previousAppend = operator + "(" + getAccumulatorString() + ")";
                         description += previousAppend;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = symbol + "(" + getAccumulatorString() + ")";
+                        description = operator + "(" + getAccumulatorString() + ")";
                     } else {
-                        description = symbol + "(" + description + ")";
+                        description = operator + "(" + description + ")";
                     }
                 }
                 break;
             case X_POWER_MINUS_1:
                 if (isPartialResult()) {
                     if (previousAppend != null) {
-                        previousAppend = "(" + previousAppend + ")" + "\u207b" + "\u00b9";
+                        previousAppend = "(" + previousAppend + ")" + getSymbol(operator);
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = "(" + getAccumulatorString() + ")" + "\u207b" + "\u00b9";
+                        previousAppend = "(" + getAccumulatorString() + ")" + getSymbol(operator);
                         description += previousAppend;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = "(" + getAccumulatorString() + ")" + "\u207b" + "\u00b9";
+                        description = "(" + getAccumulatorString() + ")" + getSymbol(operator);
                     } else {
-                        description = "(" + description + ")" + "\u207b" + "\u00b9";
+                        description = "(" + description + ")" + getSymbol(operator);
                     }
                 }
                 break;
             case SQUARE:
                 if (isPartialResult()) {
                     if (previousAppend != null) {
-                        previousAppend = "(" + previousAppend + ")" + "\u00b2";
+                        previousAppend = "(" + previousAppend + ")" + getSymbol(operator);
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = "(" + getAccumulatorString() + ")" + "\u00b2";
+                        previousAppend = "(" + getAccumulatorString() + ")" + getSymbol(operator);
                         description += previousAppend;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = "(" + getAccumulatorString() + ")" + "\u00b2";
+                        description = "(" + getAccumulatorString() + ")" + getSymbol(operator);
                     } else {
-                        description = "(" + description + ")" + "\u00b2";
+                        description = "(" + description + ")" + getSymbol(operator);
                     }
                 }
                 break;
@@ -170,18 +179,18 @@ public class CalculatorBrain {
             case EXP:
                 if (isPartialResult()) {
                     if (previousAppend != null) {
-                        previousAppend = symbol.substring(0, symbol.length() - 1) + "^(" + previousAppend + ")";
+                        previousAppend = operator.substring(0, operator.length() - 1) + "^(" + previousAppend + ")";
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = symbol.substring(0, symbol.length() - 1) + "^(" + getAccumulatorString() + ")";
+                        previousAppend = operator.substring(0, operator.length() - 1) + "^(" + getAccumulatorString() + ")";
                         description += previousAppend;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = symbol.substring(0, symbol.length() - 1) + "^(" + getAccumulatorString() + ")";
+                        description = operator.substring(0, operator.length() - 1) + "^(" + getAccumulatorString() + ")";
                     } else {
-                        description = symbol.substring(0, symbol.length() - 1) + "^(" + description + ")";
+                        description = operator.substring(0, operator.length() - 1) + "^(" + description + ")";
                     }
                 }
                 break;
@@ -190,12 +199,12 @@ public class CalculatorBrain {
             case MULTIPLICATION:
             case DIVISION:
                 if (isPartialResult()) {
-                    description += getAccumulatorString() + symbol;
+                    description += getAccumulatorString() + operator;
                 } else {
                     if (description.equals("")) {
-                        description = getAccumulatorString() + symbol;
+                        description = getAccumulatorString() + operator;
                     } else {
-                        description += symbol;
+                        description += operator;
                     }
                 }
                 break;
@@ -206,7 +215,7 @@ public class CalculatorBrain {
                     if (description.equals("")) {
                         description = "(" + getAccumulatorString() + ")^";
                     } else {
-                        description += "(" + symbol + ")^";
+                        description += "(" + operator + ")^";
                     }
                 }
                 break;
@@ -222,6 +231,11 @@ public class CalculatorBrain {
                 break;
         }
 
+    }
+
+    @NonNull
+    private String getSymbol(String operator) {
+        return symbols.get(operator);
     }
 
     @NonNull
