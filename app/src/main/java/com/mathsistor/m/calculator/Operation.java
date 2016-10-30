@@ -1,6 +1,7 @@
 package com.mathsistor.m.calculator;
 
 import java.util.function.DoubleBinaryOperator;
+import java.util.function.DoubleSupplier;
 import java.util.function.DoubleUnaryOperator;
 
 /**
@@ -26,8 +27,10 @@ public enum Operation {
     DIVISION((a, b) -> a / b),
     N_POWER(Math::pow),
     N_ROOT((a, b) -> Math.pow(a, 1 / b)),
+    RANDOM(Math::random),
     EQUALS;
 
+    private DoubleSupplier supplier;
     private double constant;
     private DoubleUnaryOperator unaryOperator;
     private DoubleBinaryOperator binaryOperator;
@@ -44,9 +47,12 @@ public enum Operation {
         this.binaryOperator = binaryOperator;
     }
 
-
     Operation() {
 
+    }
+
+    Operation(DoubleSupplier supplier) {
+        this.supplier = supplier;
     }
 
     public double getConstant() {
@@ -59,5 +65,9 @@ public enum Operation {
 
     public DoubleBinaryOperator getBinaryOperator() {
         return binaryOperator;
+    }
+
+    public DoubleSupplier getSupplier() {
+        return supplier;
     }
 }

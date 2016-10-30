@@ -47,6 +47,7 @@ public class CalculatorBrain {
         operations.put("x" + "\u02b8", Operation.N_POWER);
         operations.put("\u02b8" + "\u221a" + "x", Operation.N_ROOT);
         operations.put("x" + "\u207b" + "\u00b9", Operation.X_POWER_MINUS_1);
+        operations.put("rand", Operation.RANDOM);
         operations.put("=", Operation.EQUALS);
     }
 
@@ -60,11 +61,6 @@ public class CalculatorBrain {
     @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void performOperation(String symbol) {
-
-        if (symbol.length() == 3) {
-            System.out.println(Integer.toHexString(symbol.charAt(1) | 0x10000).substring(1));
-            System.out.println(Integer.toHexString(symbol.charAt(2) | 0x10000).substring(1));
-        }
 
         Operation operation = operations.get(symbol);
 
@@ -87,6 +83,9 @@ public class CalculatorBrain {
                 case LOG10:
                 case LN:
                     accumulator = operation.getUnaryOperator().applyAsDouble(accumulator);
+                    break;
+                case RANDOM:
+                    accumulator = operation.getSupplier().getAsDouble();
                     break;
                 case ADDITION:
                 case SUBTRACTION:
