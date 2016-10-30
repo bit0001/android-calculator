@@ -34,6 +34,7 @@ public class CalculatorBrain {
         operations.put("\u00d7", Operation.MULTIPLICATION);
         operations.put("\u00f7", Operation.DIVISION);
         operations.put("x" + "\u02b8", Operation.N_POWER);
+        operations.put("\u02b8" + "\u221a" + "x", Operation.N_ROOT);
         operations.put("=", Operation.EQUALS);
     }
 
@@ -68,6 +69,7 @@ public class CalculatorBrain {
                 case MULTIPLICATION:
                 case DIVISION:
                 case N_POWER:
+                case N_ROOT:
                     executePendingBinaryOperation();
                     pending = new PendingBinaryOperationInfo(operation.getBinaryOperator(), accumulator);
                     break;

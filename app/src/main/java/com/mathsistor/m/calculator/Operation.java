@@ -24,6 +24,7 @@ public enum Operation {
     MULTIPLICATION((a, b) -> a * b),
     DIVISION((a, b) -> a / b),
     N_POWER(Math::pow),
+    N_ROOT((a, b) -> Math.pow(a, 1 / b)),
     EQUALS;
 
     private double constant;
