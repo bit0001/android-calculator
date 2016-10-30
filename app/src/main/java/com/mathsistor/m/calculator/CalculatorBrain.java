@@ -173,7 +173,15 @@ public class CalculatorBrain {
                 }
                 break;
             case N_POWER:
-                description = "(" + description + ")" + "^";
+                if (isPartialResult()) {
+                    description += "(" + getAccumulatorString() + ")^";
+                } else {
+                    if (description.equals("")) {
+                        description = "(" + getAccumulatorString() + ")^";
+                    } else {
+                        description += "(" + symbol + ")^";
+                    }
+                }
                 break;
             case EQUALS:
                 if (!isPartialResult()) {
