@@ -16,6 +16,7 @@ public enum Operation {
     COS(Math::cos),
     TAN(Math::tan),
     EXP(Math::exp),
+    TEN_POWER(a -> Math.pow(10, a)),
     ADDITION((a, b) -> a + b),
     SUBTRACTION((a, b) -> a - b),
     MULTIPLICATION((a, b) -> a * b),
