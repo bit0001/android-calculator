@@ -44,6 +44,7 @@ public class CalculatorBrain {
         operations.put("\u00f7", Operation.DIVISION);
         operations.put("x" + "\u02b8", Operation.N_POWER);
         operations.put("\u02b8" + "\u221a" + "x", Operation.N_ROOT);
+        operations.put("x" + "\u207b" + "\u00b9", Operation.X_POWER_MINUS_1);
         operations.put("=", Operation.EQUALS);
     }
 
@@ -57,6 +58,12 @@ public class CalculatorBrain {
     @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void performOperation(String symbol) {
+
+        if (symbol.length() == 3) {
+            System.out.println(Integer.toHexString(symbol.charAt(1) | 0x10000).substring(1));
+            System.out.println(Integer.toHexString(symbol.charAt(2) | 0x10000).substring(1));
+        }
+
         Operation operation = operations.get(symbol);
 
         if (operation != null) {
@@ -67,6 +74,7 @@ public class CalculatorBrain {
                 case E_CONSTANT:
                     accumulator = operation.getConstant();
                     break;
+                case X_POWER_MINUS_1:
                 case SQUARE_ROOT:
                 case SQUARE:
                 case SIN:
@@ -118,6 +126,24 @@ public class CalculatorBrain {
                         description = symbol + "(" + getAccumulatorString() + ")";
                     } else {
                         description = symbol + "(" + description + ")";
+                    }
+                }
+                break;
+            case X_POWER_MINUS_1:
+                if (isPartialResult()) {
+                    if (previousAppend != null) {
+                        previousAppend = "(" + previousAppend + ")" + "\u207b" + "\u00b9";
+                        description = baseDescription + previousAppend;
+                    } else {
+                        baseDescription = description;
+                        previousAppend = "(" + getAccumulatorString() + ")" + "\u207b" + "\u00b9";
+                        description += previousAppend;
+                    }
+                } else {
+                    if (description.equals("")) {
+                        description = "(" + getAccumulatorString() + ")" + "\u207b" + "\u00b9";
+                    } else {
+                        description = "(" + description + ")" + "\u207b" + "\u00b9";
                     }
                 }
                 break;

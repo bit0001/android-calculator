@@ -116,7 +116,7 @@
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:textAllCaps="false"
-                android:text="ʸ√x"
+                android:text="xʸ"
                 android:onClick="performOperation"
                 tools:ignore="ButtonStyle"
                 android:backgroundTint="@color/powers" />
@@ -177,7 +177,7 @@
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:textAllCaps="false"
-                android:text="xʸ"
+                android:text="√"
                 android:onClick="performOperation"
                 tools:ignore="ButtonStyle"
                 android:backgroundTint="@color/powers" />
@@ -239,8 +239,9 @@
                 android:textSize="25sp"
                 android:textAllCaps="false"
                 android:onClick="performOperation"
-                android:text="√"
-                android:backgroundTint="@color/powers" />
+                android:text="x²"
+                android:backgroundTint="@color/powers"
+                android:id="@+id/button4" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -291,8 +292,9 @@
                 android:textSize="25sp"
                 android:textAllCaps="false"
                 android:onClick="performOperation"
-                android:text="x²"
-                android:backgroundTint="@color/powers" />
+                android:text="x⁻¹"
+                android:backgroundTint="@color/powers"
+                android:id="@+id/button3" />
 
             <Button
                 android:layout_width="wrap_content"
