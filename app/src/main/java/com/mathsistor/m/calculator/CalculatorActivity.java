@@ -11,7 +11,6 @@ import android.widget.TextView;
 public class CalculatorActivity extends AppCompatActivity {
 
     private boolean userIsInTheMiddleOfTyping;
-    private boolean floatingPointIsDisplayed;
     private TextView result_display;
     private CalculatorBrain brain;
     private TextView operation_display;
@@ -30,7 +29,6 @@ public class CalculatorActivity extends AppCompatActivity {
         brain = new CalculatorBrain();
         initializeDisplays();
         userIsInTheMiddleOfTyping = false;
-        floatingPointIsDisplayed = false;
     }
 
     public void touchDigit(View view) {
@@ -50,7 +48,6 @@ public class CalculatorActivity extends AppCompatActivity {
         if (userIsInTheMiddleOfTyping) {
             brain.setOperand(getDisplayValue());
             userIsInTheMiddleOfTyping = false;
-            floatingPointIsDisplayed = false;
         }
 
         String mathSymbol = ((Button) view).getText().toString();
@@ -78,14 +75,41 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void addDecimalPoint(View view) {
-        if (!floatingPointIsDisplayed) {
+        if (!isFloatingPointIsDisplayed()) {
             if (userIsInTheMiddleOfTyping) {
-                result_display.setText(((int) getDisplayValue()) + ".");
+                result_display.setText(getDisplayValueString() + ".");
             } else {
                 result_display.setText("0.");
             }
-            floatingPointIsDisplayed = true;
-            userIsInTheMiddleOfTyping = true;
+        } else {
+            if (!userIsInTheMiddleOfTyping) {
+                result_display.setText("0.");
+            }
         }
+        userIsInTheMiddleOfTyping = true;
+    }
+
+    public void delete(View view) {
+        if (userIsInTheMiddleOfTyping) {
+            if (getDisplayValueString().length() >= 2) {
+                String newString = getDisplayValueString().substring(0, getDisplayValueString().length() - 1);
+                result_display.setText(newString);
+
+                if (newString.equals("0")) {
+                    userIsInTheMiddleOfTyping = false;
+                }
+            } else if (getDisplayValueString().length() == 1) {
+                result_display.setText("0");
+                userIsInTheMiddleOfTyping = false;
+            }
+        }
+    }
+
+    private String getDisplayValueString() {
+        return result_display.getText().toString();
+    }
+
+    private boolean isFloatingPointIsDisplayed() {
+        return getDisplayValueString().contains(".");
     }
 }
