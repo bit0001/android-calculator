@@ -22,6 +22,7 @@ public class CalculatorBrain {
         operations.put("e", Operation.E_CONSTANT);
         operations.put("\u221a", Operation.SQUARE_ROOT);
         operations.put("x" + "\u00b2", Operation.SQUARE);
+        operations.put("sin", Operation.SIN);
         operations.put("+", Operation.ADDITION);
         operations.put("\u2212", Operation.SUBTRACTION);
         operations.put("\u00d7", Operation.MULTIPLICATION);
@@ -46,6 +47,7 @@ public class CalculatorBrain {
                     break;
                 case SQUARE_ROOT:
                 case SQUARE:
+                case SIN:
                     accumulator = operation.getUnaryOperator().applyAsDouble(accumulator);
                     break;
                 case ADDITION:

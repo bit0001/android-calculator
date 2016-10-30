@@ -16,7 +16,8 @@ public enum Operation {
     SUBTRACTION((a, b) -> a - b),
     MULTIPLICATION((a, b) -> a * b),
     DIVISION((a, b) -> a / b),
-    EQUALS;
+    EQUALS,
+    SIN(Math::sin);
 
     private double constant;
     private DoubleUnaryOperator unaryOperator;
