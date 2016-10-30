@@ -11,6 +11,7 @@ public enum Operation {
     PI_CONSTANT(Math.PI),
     E_CONSTANT(Math.E),
     SQUARE_ROOT(Math::sqrt),
+    SQUARE(a -> a * a),
     ADDITION((a, b) -> a + b),
     SUBTRACTION((a, b) -> a - b),
     MULTIPLICATION((a, b) -> a * b),
