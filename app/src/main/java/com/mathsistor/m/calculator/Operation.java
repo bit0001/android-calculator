@@ -12,12 +12,13 @@ public enum Operation {
     E_CONSTANT(Math.E),
     SQUARE_ROOT(Math::sqrt),
     SQUARE(a -> a * a),
+    SIN(Math::sin),
+    COS(Math::cos),
     ADDITION((a, b) -> a + b),
     SUBTRACTION((a, b) -> a - b),
     MULTIPLICATION((a, b) -> a * b),
     DIVISION((a, b) -> a / b),
-    EQUALS,
-    SIN(Math::sin);
+    EQUALS;
 
     private double constant;
     private DoubleUnaryOperator unaryOperator;
