@@ -140,23 +140,6 @@ public class CalculatorBrain {
                 }
                 break;
             case X_POWER_MINUS_1:
-                if (isPartialResult()) {
-                    if (previousAppend != null) {
-                        previousAppend = "(" + previousAppend + ")" + getSymbol(operator);
-                        description = baseDescription + previousAppend;
-                    } else {
-                        baseDescription = description;
-                        previousAppend = "(" + getAccumulatorString() + ")" + getSymbol(operator);
-                        description += previousAppend;
-                    }
-                } else {
-                    if (description.equals("")) {
-                        description = "(" + getAccumulatorString() + ")" + getSymbol(operator);
-                    } else {
-                        description = "(" + description + ")" + getSymbol(operator);
-                    }
-                }
-                break;
             case SQUARE:
                 if (isPartialResult()) {
                     if (previousAppend != null) {
