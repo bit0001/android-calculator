@@ -35,14 +35,14 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void touchDigit(View view) {
         String digit = ((Button) view).getText().toString();
-        result_display.setText(userIsInTheMiddleOfTyping ? getDisplayValueString() + digit : digit);
+        result_display.setText(userIsInTheMiddleOfTyping ? getDisplayString() + digit : digit);
         userIsInTheMiddleOfTyping = true;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void performOperation(View view) {
         if (userIsInTheMiddleOfTyping) {
-            brain.setOperand(Double.parseDouble(getDisplayValueString()));
+            brain.setOperand(Double.parseDouble(getDisplayString()));
             userIsInTheMiddleOfTyping = false;
         }
 
@@ -62,8 +62,8 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void addDecimalPoint(View view) {
         if (userIsInTheMiddleOfTyping) {
-            if (!getDisplayValueString().contains(".")) {
-                result_display.setText(getDisplayValueString() + ".");
+            if (!getDisplayString().contains(".")) {
+                result_display.setText(getDisplayString() + ".");
             }
         } else {
             result_display.setText("0.");
@@ -73,7 +73,7 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void delete(View view) {
-        StringBuilder currentText = new StringBuilder(getDisplayValueString());
+        StringBuilder currentText = new StringBuilder(getDisplayString());
         currentText.deleteCharAt(currentText.length() - 1);
 
         if (currentText.toString().isEmpty()) {
@@ -84,7 +84,7 @@ public class CalculatorActivity extends AppCompatActivity {
         }
     }
 
-    private String getDisplayValueString() {
+    private String getDisplayString() {
         return result_display.getText().toString();
     }
 
