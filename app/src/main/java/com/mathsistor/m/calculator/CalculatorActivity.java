@@ -35,13 +35,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void touchDigit(View view) {
         String digit = ((Button) view).getText().toString();
-
-        if (userIsInTheMiddleOfTyping) {
-            result_display.setText(getDisplayValueString() + digit);
-        } else {
-            result_display.setText(digit);
-        }
-
+        result_display.setText(userIsInTheMiddleOfTyping ? getDisplayValueString() + digit : digit);
         userIsInTheMiddleOfTyping = true;
     }
 
