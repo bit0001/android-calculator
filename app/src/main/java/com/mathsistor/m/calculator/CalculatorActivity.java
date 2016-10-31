@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class CalculatorActivity extends AppCompatActivity {
 
@@ -55,7 +54,8 @@ public class CalculatorActivity extends AppCompatActivity {
 
         String operator = ((Button) view).getText().toString();
         brain.performOperation(operator);
-        setDisplays(getResultFormatted());
+        result_display.setText(getResultFormatted());
+        operation_display.setText(brain.getDescription() + (brain.isPartialResult() ? "..." : "="));
     }
 
     private String getResultFormatted() {
@@ -64,11 +64,6 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public double getDisplayValue() {
         return Double.parseDouble(result_display.getText().toString());
-    }
-
-    public void setDisplays(String displayValue) {
-        result_display.setText(displayValue);
-        operation_display.setText(brain.getDescription() + (brain.isPartialResult() ? "..." : "="));
     }
 
     public void clearEverything(View view) {
