@@ -15,6 +15,8 @@ public enum Operation {
     SQUARE_ROOT(Math::sqrt),
     X_POWER_MINUS_1(a -> 1 / a),
     SQUARE(a -> a * a),
+    CUBE(a -> a * a * a),
+    CUBE_ROOT(a -> Math.pow(a, 1.0 / 3.0)),
     SIN(Math::sin),
     COS(Math::cos),
     TAN(Math::tan),

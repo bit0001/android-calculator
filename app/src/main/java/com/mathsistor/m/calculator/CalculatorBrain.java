@@ -36,12 +36,16 @@ public class CalculatorBrain {
         operations.put("e", Operation.E_CONSTANT);
         operations.put("+/-", Operation.UNARY_NEGATIVE);
         operations.put("\u221a", Operation.SQUARE_ROOT);
+        operations.put("\u221b", Operation.CUBE_ROOT);
+
+        operations.put("x" + "\u207b" + "\u00b9", Operation.X_POWER_MINUS_1);
+        symbols.put("x" + "\u207b" + "\u00b9", "\u207b" + "\u00b9");
 
         operations.put("x" + "\u00b2", Operation.SQUARE);
         symbols.put("x" + "\u00b2", "\u00b2");
 
-        operations.put("x" + "\u207b" + "\u00b9", Operation.X_POWER_MINUS_1);
-        symbols.put("x" + "\u207b" + "\u00b9", "\u207b" + "\u00b9");
+        operations.put("x" + "\u00b3", Operation.CUBE);
+        symbols.put("x" + "\u00b3", "\u00b3");
 
         operations.put("sin", Operation.SIN);
         operations.put("cos", Operation.COS);
