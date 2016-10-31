@@ -16,57 +16,17 @@ import java.util.HashMap;
 public class CalculatorBrain {
 
     private double accumulator;
-    private static HashMap<String, Operation> operations;
-    private static HashMap<String, String> symbols;
-
     private PendingBinaryOperationInfo pending;
     private String description;
     private String previousAppend;
     private String baseDescription;
+    private HashMap<String, Operation> operations;
+    private HashMap<String, String> symbols;
 
     CalculatorBrain() {
         this.description = "";
-    }
-
-    static {
-        operations =  new HashMap<>();
-        symbols = new HashMap<>();
-
-        operations.put("\u03c0", Operation.PI_CONSTANT);
-        operations.put("e", Operation.E_CONSTANT);
-        operations.put("+/-", Operation.UNARY_NEGATIVE);
-        operations.put("\u221a", Operation.SQUARE_ROOT);
-        operations.put("\u221b", Operation.CUBE_ROOT);
-
-        operations.put("x" + "\u207b" + "\u00b9", Operation.X_POWER_MINUS_1);
-        symbols.put("x" + "\u207b" + "\u00b9", "\u207b" + "\u00b9");
-
-        operations.put("x" + "\u00b2", Operation.SQUARE);
-        symbols.put("x" + "\u00b2", "\u00b2");
-
-        operations.put("x" + "\u00b3", Operation.CUBE);
-        symbols.put("x" + "\u00b3", "\u00b3");
-
-        operations.put("sin", Operation.SIN);
-        operations.put("cos", Operation.COS);
-        operations.put("tan", Operation.TAN);
-
-        operations.put("e" + "\u02e3", Operation.EXP);
-        symbols.put("e" + "\u02e3", "e^");
-
-        operations.put("10" + "\u02e3", Operation.TEN_POWER);
-        symbols.put("10" + "\u02e3", "10^");
-
-        operations.put("log", Operation.LOG10);
-        operations.put("ln", Operation.LN);
-        operations.put("+", Operation.ADDITION);
-        operations.put("\u2212", Operation.SUBTRACTION);
-        operations.put("\u00d7", Operation.MULTIPLICATION);
-        operations.put("\u00f7", Operation.DIVISION);
-        operations.put("x" + "\u02b8", Operation.N_POWER);
-        operations.put("\u02b8" + "\u221a" + "x", Operation.N_ROOT);
-        operations.put("rand", Operation.RANDOM);
-        operations.put("=", Operation.EQUALS);
+        operations = Operations.getInstance().operations;
+        symbols = Symbols.getInstance().symbols;
     }
 
     public void setOperand(double operand) {
