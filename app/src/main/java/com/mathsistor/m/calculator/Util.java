@@ -5,9 +5,10 @@ import java.util.HashMap;
 /**
  * Created by m on 10/31/2016.
  */
-public class Util {
+public abstract class Util {
 
     public static HashMap<String, Operation> OPERATIONS;
+    public static HashMap<String, String> SYMBOLS;
 
     static  {
         OPERATIONS =  new HashMap<>();
@@ -34,6 +35,13 @@ public class Util {
         OPERATIONS.put("\u02b8" + "\u221a" + "x", Operation.N_ROOT);
         OPERATIONS.put("rand", Operation.RANDOM);
         OPERATIONS.put("=", Operation.EQUALS);
+
+        SYMBOLS = new HashMap<>();
+        SYMBOLS.put("x" + "\u207b" + "\u00b9", "\u207b" + "\u00b9");
+        SYMBOLS.put("x" + "\u00b2", "\u00b2");
+        SYMBOLS.put("x" + "\u00b3", "\u00b3");
+        SYMBOLS.put("e" + "\u02e3", "e^");
+        SYMBOLS.put("10" + "\u02e3", "10^");
     }
 
 }
