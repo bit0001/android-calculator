@@ -25,7 +25,7 @@ public class CalculatorBrain {
 
     CalculatorBrain() {
         this.description = "";
-        operations = Operations.getInstance().operations;
+        operations = Operations.OPERATIONS;
         symbols = Symbols.getInstance().symbols;
     }
 
