@@ -74,7 +74,7 @@ public class CalculatorActivity extends AppCompatActivity {
         operation_display.setText(brain.getDescription() + (brain.isPartialResult() ? "..." : "="));
     }
 
-    public void clear(View view) {
+    public void clearEverything(View view) {
         clear();
     }
 
