@@ -2,7 +2,6 @@ package com.mathsistor.m.calculator;
 
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.support.annotation.BoolRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 
