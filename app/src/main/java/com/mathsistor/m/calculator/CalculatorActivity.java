@@ -91,17 +91,14 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void addDecimalPoint(View view) {
-        if (!isFloatingPointIsDisplayed()) {
-            if (userIsInTheMiddleOfTyping) {
+        if (userIsInTheMiddleOfTyping) {
+            if (!decimalPointIsDisplayed()) {
                 result_display.setText(getDisplayValueString() + ".");
-            } else {
-                result_display.setText("0.");
             }
         } else {
-            if (!userIsInTheMiddleOfTyping) {
-                result_display.setText("0.");
-            }
+            result_display.setText("0.");
         }
+
         userIsInTheMiddleOfTyping = true;
     }
 
@@ -125,7 +122,7 @@ public class CalculatorActivity extends AppCompatActivity {
         return result_display.getText().toString();
     }
 
-    private boolean isFloatingPointIsDisplayed() {
+    private boolean decimalPointIsDisplayed() {
         return getDisplayValueString().contains(".");
     }
 }
