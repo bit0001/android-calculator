@@ -59,9 +59,7 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private String getResultFormatted() {
-        NumberFormat formatter = new DecimalFormat("#0.######");
-
-        return formatter.format(brain.getResult());
+        return new DecimalFormat("#0.######").format(brain.getResult());
     }
 
     public double getDisplayValue() {
