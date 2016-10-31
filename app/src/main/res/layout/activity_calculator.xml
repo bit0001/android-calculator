@@ -178,10 +178,11 @@
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:textAllCaps="false"
-                android:text="√"
+                android:text="∛"
                 android:onClick="performOperation"
                 tools:ignore="ButtonStyle"
-                android:backgroundTint="@color/powers" />
+                android:backgroundTint="@color/third_power"
+                android:id="@+id/button5" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -240,8 +241,8 @@
                 android:textSize="25sp"
                 android:textAllCaps="false"
                 android:onClick="performOperation"
-                android:text="x²"
-                android:backgroundTint="@color/powers"
+                android:text="x³"
+                android:backgroundTint="@color/third_power"
                 android:id="@+id/button4" />
 
             <Button
@@ -293,8 +294,8 @@
                 android:textSize="25sp"
                 android:textAllCaps="false"
                 android:onClick="performOperation"
-                android:text="x⁻¹"
-                android:backgroundTint="@color/powers"
+                android:text="√"
+                android:backgroundTint="@color/second_power"
                 android:id="@+id/button3" />
 
             <Button
@@ -340,12 +341,15 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:onClick="performOperation"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:textSize="25sp"
-                android:text="("
-                android:backgroundTint="@color/parenthesis" />
+                android:text="x²"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/second_power"
+                android:id="@+id/button6" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -391,12 +395,13 @@
             android:layout_height="wrap_content">
 
             <Button
+                android:onClick="performOperation"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:textAllCaps="false"
-                android:text=")"
+                android:text="x⁻¹"
                 tools:ignore="NestedWeights"
                 android:backgroundTint="@color/parenthesis" />
             <Button

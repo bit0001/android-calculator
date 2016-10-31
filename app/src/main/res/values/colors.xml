@@ -3,8 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#ff4081</color>
-    <color name="powers">#cab113</color>
     <color name="parenthesis">#1c8f69</color>
     <color name="constant">#7fa87f</color>
     <color name="light_gray">#c1c1c1</color>
+    <color name="powers">#f9da16</color>
+    <color name="third_power">#7cb608</color>
+    <color name="second_power">#8daf30</color>
 </resources>

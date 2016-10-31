@@ -93,7 +93,9 @@ public class CalculatorBrain {
                 case UNARY_NEGATIVE:
                 case X_POWER_MINUS_1:
                 case SQUARE_ROOT:
+                case CUBE_ROOT:
                 case SQUARE:
+                case CUBE:
                 case SIN:
                 case COS:
                 case TAN:
@@ -143,6 +145,7 @@ public class CalculatorBrain {
                 }
                 break;
             case SQUARE_ROOT:
+            case CUBE_ROOT:
             case SIN:
             case COS:
             case TAN:
@@ -167,6 +170,7 @@ public class CalculatorBrain {
                 break;
             case X_POWER_MINUS_1:
             case SQUARE:
+            case CUBE:
                 if (isPartialResult()) {
                     if (previousAppend != null) {
                         previousAppend = "(" + previousAppend + ")" + getSymbol(operator);
