@@ -29,7 +29,8 @@ public class CalculatorActivity extends AppCompatActivity {
 
     private void clear() {
         brain = new CalculatorBrain();
-        initializeDisplays();
+        result_display.setText("0");
+        operation_display.setText("");
         userIsInTheMiddleOfTyping = false;
     }
 
@@ -66,11 +67,6 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public double getDisplayValue() {
         return Double.parseDouble(result_display.getText().toString());
-    }
-
-    public void initializeDisplays() {
-        result_display.setText("0");
-        operation_display.setText("");
     }
 
     public void setDisplays(String displayValue) {
