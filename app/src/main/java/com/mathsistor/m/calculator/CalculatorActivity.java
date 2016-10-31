@@ -53,9 +53,8 @@ public class CalculatorActivity extends AppCompatActivity {
             userIsInTheMiddleOfTyping = false;
         }
 
-        String mathSymbol = ((Button) view).getText().toString();
-
-        brain.performOperation(mathSymbol);
+        String operator = ((Button) view).getText().toString();
+        brain.performOperation(operator);
         setDisplays(getResultFormatted());
     }
 
