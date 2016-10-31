@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Created by m on 10/31/2016.
  */
-public class Operations {
+public class Util {
 
     public static HashMap<String, Operation> OPERATIONS;
 
