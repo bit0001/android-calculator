@@ -24,7 +24,6 @@ public class CalculatorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calculator);
         result_display = (TextView) findViewById(R.id.result_display);
         operation_display = (TextView) findViewById(R.id.operation_display);
-
         clear();
     }
 
@@ -60,13 +59,6 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private String getResultFormatted() {
-        double result = brain.getResult();
-        double decimalPart = result - Math.floor(result);
-
-        if (Math.abs(decimalPart) < 0.000001) {
-            return String.valueOf((int) result);
-        }
-
         NumberFormat formatter = new DecimalFormat("#0.######");
 
         return formatter.format(brain.getResult());
