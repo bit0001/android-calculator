@@ -41,7 +41,7 @@ public class CalculatorActivity extends AppCompatActivity {
         } else {
             result_display.setText(digit);
         }
-        
+
         userIsInTheMiddleOfTyping = true;
     }
 
@@ -95,18 +95,14 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void delete(View view) {
-        if (userIsInTheMiddleOfTyping) {
-            if (getDisplayValueString().length() >= 2) {
-                String newString = getDisplayValueString().substring(0, getDisplayValueString().length() - 1);
-                result_display.setText(newString);
+        StringBuilder currentText = new StringBuilder(getDisplayValueString());
+        currentText.deleteCharAt(currentText.length() - 1);
 
-                if (newString.equals("0")) {
-                    userIsInTheMiddleOfTyping = false;
-                }
-            } else if (getDisplayValueString().length() == 1) {
-                result_display.setText("0");
-                userIsInTheMiddleOfTyping = false;
-            }
+        if (currentText.toString().isEmpty()) {
+            result_display.setText("0");
+            userIsInTheMiddleOfTyping = false;
+        } else {
+            result_display.setText(currentText.toString());
         }
     }
 
