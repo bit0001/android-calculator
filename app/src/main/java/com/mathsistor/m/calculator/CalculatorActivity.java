@@ -42,7 +42,7 @@ public class CalculatorActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void performOperation(View view) {
         if (userIsInTheMiddleOfTyping) {
-            brain.setOperand(getDisplayValue());
+            brain.setOperand(Double.parseDouble(getDisplayValueString()));
             userIsInTheMiddleOfTyping = false;
         }
 
@@ -56,17 +56,13 @@ public class CalculatorActivity extends AppCompatActivity {
         return new DecimalFormat("#0.######").format(brain.getResult());
     }
 
-    public double getDisplayValue() {
-        return Double.parseDouble(result_display.getText().toString());
-    }
-
     public void clearEverything(View view) {
         clear();
     }
 
     public void addDecimalPoint(View view) {
         if (userIsInTheMiddleOfTyping) {
-            if (!decimalPointIsDisplayed()) {
+            if (!getDisplayValueString().contains(".")) {
                 result_display.setText(getDisplayValueString() + ".");
             }
         } else {
@@ -92,7 +88,4 @@ public class CalculatorActivity extends AppCompatActivity {
         return result_display.getText().toString();
     }
 
-    private boolean decimalPointIsDisplayed() {
-        return getDisplayValueString().contains(".");
-    }
 }
