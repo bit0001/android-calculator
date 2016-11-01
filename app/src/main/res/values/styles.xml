@@ -31,4 +31,10 @@
         <item name="android:textSize">22sp</item>
     </style>
 
+    <style name="trig" parent="cal_button">
+        <item name="android:textSize">22sp</item>
+        <item name="android:backgroundTint" tools:targetApi="lollipop">?android:attr/colorEdgeEffect</item>
+        <item name="android:textColor">@color/light_gray</item>
+    </style>
+
 </resources>
