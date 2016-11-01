@@ -49,25 +49,21 @@
             android:layout_height="wrap_content">
 
             <Button
-                style="@style/cal_button"
+                style="@style/operation"
                 android:textSize="20sp"
                 android:text="rand"
-                android:onClick="performOperation"
                 android:backgroundTint="@android:color/holo_orange_dark" />
 
             <Button
                 style="@style/trig"
-                android:onClick="performOperation"
                 android:text="sin" />
 
             <Button
                 style="@style/trig"
-                android:onClick="performOperation"
                 android:text="cos" />
 
             <Button
                 style="@style/trig"
-                android:onClick="performOperation"
                 android:text="tan" />
 
             <Button
@@ -86,24 +82,20 @@
             android:layout_height="wrap_content">
 
             <Button
-                style="@style/cal_button"
+                style="@style/operation"
                 android:text="xʸ"
-                android:onClick="performOperation"
                 android:backgroundTint="@color/powers" />
 
             <Button
                 style="@style/constant"
-                android:onClick="performOperation"
                 android:text="π" />
 
             <Button
                 style="@style/exponential"
-                android:onClick="performOperation"
                 android:text="10ˣ" />
 
             <Button
                 style="@style/exponential"
-                android:onClick="performOperation"
                 android:text="log" />
 
             <Button
@@ -123,30 +115,25 @@
             android:layout_height="wrap_content">
 
             <Button
-                style="@style/cal_button"
+                style="@style/operation"
                 android:text="∛"
-                android:onClick="performOperation"
                 android:backgroundTint="@color/third_power" />
 
             <Button
                 style="@style/constant"
-                android:onClick="performOperation"
                 android:text="e" />
 
             <Button
                 style="@style/exponential"
                 android:textSize="24sp"
-                android:onClick="performOperation"
                 android:text="eˣ" />
 
             <Button
                 style="@style/exponential"
-                android:onClick="performOperation"
                 android:text="ln" />
 
             <Button
                 style="@style/purple"
-                android:onClick="performOperation"
                 android:text="×" />
 
         </LinearLayout>
@@ -158,8 +145,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                style="@style/cal_button"
-                android:onClick="performOperation"
+                style="@style/operation"
                 android:text="x³"
                 android:backgroundTint="@color/third_power" />
 
@@ -177,7 +163,6 @@
 
             <Button
                 style="@style/purple"
-                android:onClick="performOperation"
                 android:text="÷" />
 
         </LinearLayout>
@@ -189,8 +174,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                style="@style/cal_button"
-                android:onClick="performOperation"
+                style="@style/operation"
                 android:text="√"
                 android:backgroundTint="@color/second_power" />
 
@@ -208,7 +192,6 @@
 
             <Button
                 style="@style/purple"
-                android:onClick="performOperation"
                 android:text="+" />
 
         </LinearLayout>
@@ -220,8 +203,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                style="@style/cal_button"
-                android:onClick="performOperation"
+                style="@style/operation"
                 android:text="x²"
                 android:backgroundTint="@color/second_power" />
 
@@ -239,7 +221,6 @@
 
             <Button
                 style="@style/purple"
-                android:onClick="performOperation"
                 android:text="−" />
 
         </LinearLayout>
@@ -251,8 +232,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                style="@style/cal_button"
-                android:onClick="performOperation"
+                style="@style/operation"
                 android:text="x⁻¹"
                 android:backgroundTint="@color/parenthesis" />
             <Button
@@ -266,14 +246,12 @@
                 android:text="." />
 
             <Button
-                style="@style/cal_button"
+                style="@style/operation"
                 android:textSize="24sp"
-                android:onClick="performOperation"
                 android:text="+/-" />
 
             <Button
                 style="@style/purple"
-                android:onClick="performOperation"
                 android:text="=" />
 
         </LinearLayout>
