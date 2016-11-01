@@ -39,49 +39,50 @@ public class CalculatorBrain {
     @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void performOperation(String symbol) {
-
         Operation operation = operations.get(symbol);
 
         if (operation != null) {
             setDescription(symbol);
-
-            switch (operation) {
-                case PI_CONSTANT:
-                case E_CONSTANT:
-                    accumulator = operation.getConstant();
-                    break;
-                case UNARY_NEGATIVE:
-                case X_POWER_MINUS_1:
-                case SQUARE_ROOT:
-                case CUBE_ROOT:
-                case SQUARE:
-                case CUBE:
-                case SIN:
-                case COS:
-                case TAN:
-                case EXP:
-                case TEN_POWER:
-                case LOG10:
-                case LN:
-                    accumulator = operation.getUnaryOperator().applyAsDouble(accumulator);
-                    break;
-                case RANDOM:
-                    accumulator = operation.getSupplier().getAsDouble();
-                    break;
-                case ADDITION:
-                case SUBTRACTION:
-                case MULTIPLICATION:
-                case DIVISION:
-                case N_POWER:
-                case N_ROOT:
-                    executePendingBinaryOperation();
-                    pending = new PendingBinaryOperationInfo(operation.getBinaryOperator(), accumulator);
-                    break;
-                case EQUALS:
-                    executePendingBinaryOperation();
-            }
+            computeResult(operation);
         }
+    }
 
+    private void computeResult(Operation operation) {
+        switch (operation) {
+            case PI_CONSTANT:
+            case E_CONSTANT:
+                accumulator = operation.getConstant();
+                break;
+            case UNARY_NEGATIVE:
+            case X_POWER_MINUS_1:
+            case SQUARE_ROOT:
+            case CUBE_ROOT:
+            case SQUARE:
+            case CUBE:
+            case SIN:
+            case COS:
+            case TAN:
+            case EXP:
+            case TEN_POWER:
+            case LOG10:
+            case LN:
+                accumulator = operation.getUnaryOperator().applyAsDouble(accumulator);
+                break;
+            case RANDOM:
+                accumulator = operation.getSupplier().getAsDouble();
+                break;
+            case ADDITION:
+            case SUBTRACTION:
+            case MULTIPLICATION:
+            case DIVISION:
+            case N_POWER:
+            case N_ROOT:
+                executePendingBinaryOperation();
+                pending = new PendingBinaryOperationInfo(operation.getBinaryOperator(), accumulator);
+                break;
+            case EQUALS:
+                executePendingBinaryOperation();
+        }
     }
 
     private void setDescription(String operator) {
