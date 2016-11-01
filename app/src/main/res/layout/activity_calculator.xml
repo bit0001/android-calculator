@@ -56,37 +56,19 @@
                 android:backgroundTint="@android:color/holo_orange_dark" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="22sp"
-                android:textAllCaps="false"
+                style="@style/trig"
                 android:onClick="performOperation"
-                android:text="sin"
-                android:backgroundTint="?android:attr/colorEdgeEffect"
-                android:textColor="@color/light_gray" />
+                android:text="sin" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="22sp"
-                android:textAllCaps="false"
+                style="@style/trig"
                 android:onClick="performOperation"
-                android:text="cos"
-                android:backgroundTint="?android:attr/colorEdgeEffect"
-                android:textColor="@color/light_gray" />
+                android:text="cos" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="22sp"
+                style="@style/trig"
                 android:onClick="performOperation"
-                android:textAllCaps="false"
-                android:text="tan"
-                android:backgroundTint="?android:attr/colorEdgeEffect"
-                android:textColor="@color/light_gray" />
+                android:text="tan" />
 
             <Button
                 android:layout_width="wrap_content"
