@@ -106,11 +106,7 @@ public class OperationDescription {
                         previousAppend = null;
                     }
                 } else {
-                    if (description.equals("")) {
-                        description = getAccumulatorString(accumulator) + operator;
-                    } else {
-                        description += operator;
-                    }
+                    description = (description.equals("") ? getAccumulatorString(accumulator) : description) + operator;
                 }
                 break;
             case N_POWER:
