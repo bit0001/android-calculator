@@ -30,16 +30,16 @@ public class OperationDescription {
             case UNARY_NEGATIVE:
                 if (isPartialResult) {
                     if (previousAppend != null) {
-                        previousAppend = "(" + "-" + previousAppend + ")";
+                        previousAppend = betweenParentheses("-" + previousAppend );
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = "(" + "-" + getAccumulatorString(accumulator) + ")";
+                        previousAppend = betweenParentheses("-" + getAccumulatorString(accumulator));
                         description += previousAppend;
                     }
                 } else {
                     if (!description.equals("")) {
-                        description = "-" + "(" + description + ")";
+                        description = "-" + betweenParentheses(description);
                     }
                 }
                 break;
@@ -52,18 +52,18 @@ public class OperationDescription {
             case LN:
                 if (isPartialResult) {
                     if (previousAppend != null) {
-                        previousAppend = operator + "(" + previousAppend + ")";
+                        previousAppend = operator + betweenParentheses(previousAppend);
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = operator + "(" + getAccumulatorString(accumulator) + ")";
+                        previousAppend = operator + betweenParentheses(getAccumulatorString(accumulator));
                         description += previousAppend;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = operator + "(" + getAccumulatorString(accumulator) + ")";
+                        description = operator + betweenParentheses(getAccumulatorString(accumulator));
                     } else {
-                        description = operator + "(" + description + ")";
+                        description = operator + betweenParentheses(description);
                     }
                 }
                 break;
@@ -72,18 +72,18 @@ public class OperationDescription {
             case CUBE:
                 if (isPartialResult) {
                     if (previousAppend != null) {
-                        previousAppend = "(" + previousAppend + ")" + getSymbol(operator);
+                        previousAppend = betweenParentheses(previousAppend) + getSymbol(operator);
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = "(" + getAccumulatorString(accumulator) + ")" + getSymbol(operator);
+                        previousAppend = betweenParentheses(getAccumulatorString(accumulator)) + getSymbol(operator);
                         description += previousAppend;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = "(" + getAccumulatorString(accumulator) + ")" + getSymbol(operator);
+                        description = betweenParentheses(getAccumulatorString(accumulator)) + getSymbol(operator);
                     } else {
-                        description = "(" + description + ")" + getSymbol(operator);
+                        description = betweenParentheses(description) + getSymbol(operator);
                     }
                 }
                 break;
@@ -91,18 +91,18 @@ public class OperationDescription {
             case EXP:
                 if (isPartialResult) {
                     if (previousAppend != null) {
-                        previousAppend = getSymbol(operator) + "(" + previousAppend + ")";
+                        previousAppend = getSymbol(operator) + betweenParentheses(previousAppend);
                         description = baseDescription + previousAppend;
                     } else {
                         baseDescription = description;
-                        previousAppend = getSymbol(operator) + "(" + getAccumulatorString(accumulator) + ")";
+                        previousAppend = getSymbol(operator) + betweenParentheses(getAccumulatorString(accumulator));
                         description += previousAppend;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = getSymbol(operator) + "(" + getAccumulatorString(accumulator) + ")";
+                        description = getSymbol(operator) + betweenParentheses(getAccumulatorString(accumulator));
                     } else {
-                        description = getSymbol(operator) + "(" + description + ")";
+                        description = getSymbol(operator) + betweenParentheses(description);
                     }
                 }
                 break;
@@ -128,16 +128,16 @@ public class OperationDescription {
             case N_POWER:
                 if (isPartialResult) {
                     if (previousAppend == null) {
-                        description = "(" + description +  getAccumulatorString(accumulator) + ")^";
+                        description = betweenParentheses(description +  getAccumulatorString(accumulator)) + "^";
                     } else {
-                        description = "(" + description + ")^";
+                        description = betweenParentheses(description) + "^";
                         previousAppend = null;
                     }
                 } else {
                     if (description.equals("")) {
-                        description = "(" + getAccumulatorString(accumulator) + ")^";
+                        description = betweenParentheses(getAccumulatorString(accumulator)) + "^";
                     } else {
-                        description = "(" + description + ")^";
+                        description = betweenParentheses(description) + "^";
                     }
                 }
                 break;
@@ -168,6 +168,10 @@ public class OperationDescription {
             NumberFormat formatter = new DecimalFormat("#0.######");
             return formatter.format(accumulator);
         }
+    }
+
+    private String betweenParentheses(String string) {
+        return "(" + string + ")";
     }
 
     @NonNull
