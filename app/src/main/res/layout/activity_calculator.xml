@@ -217,13 +217,12 @@
                 android:textColor="@android:color/darker_gray" />
 
             <Button
+                style="@style/purple"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:textSize="25sp"
                 android:onClick="performOperation"
                 android:text="×"
-                android:backgroundTint="@android:color/holo_purple"
                 android:textColor="@android:color/background_light" />
 
         </LinearLayout>
@@ -270,13 +269,12 @@
                 android:text="9" />
 
             <Button
+                style="@style/purple"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:textSize="25sp"
                 android:onClick="performOperation"
                 android:text="÷"
-                android:backgroundTint="@android:color/holo_purple"
                 android:textColor="@android:color/background_light" />
 
         </LinearLayout>
@@ -323,13 +321,12 @@
                 android:text="6" />
 
             <Button
+                style="@style/purple"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:textSize="25sp"
                 android:onClick="performOperation"
                 android:text="+"
-                android:backgroundTint="@android:color/holo_purple"
                 android:textColor="@android:color/background_light" />
 
         </LinearLayout>
@@ -376,14 +373,13 @@
                 android:text="3" />
 
             <Button
+                style="@style/purple"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:textSize="25sp"
                 android:onClick="performOperation"
                 android:text="−"
                 android:id="@+id/button"
-                android:backgroundTint="@android:color/holo_purple"
                 android:textColor="@android:color/background_light" />
 
         </LinearLayout>
@@ -430,14 +426,13 @@
                 android:text="+/-" />
 
             <Button
+                style="@style/purple"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:textSize="25sp"
                 android:onClick="performOperation"
                 android:text="="
                 android:id="@+id/button2"
-                android:backgroundTint="@android:color/holo_purple"
                 android:textColor="@android:color/background_light" />
 
         </LinearLayout>
