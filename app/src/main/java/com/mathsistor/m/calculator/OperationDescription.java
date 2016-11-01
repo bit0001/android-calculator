@@ -60,11 +60,7 @@ public class OperationDescription {
                         description += previousAppend;
                     }
                 } else {
-                    if (description.equals("")) {
-                        description = operator + betweenParentheses(getAccumulatorString(accumulator));
-                    } else {
-                        description = operator + betweenParentheses(description);
-                    }
+                    description = operator + betweenParentheses(description.equals("") ? getAccumulatorString(accumulator) : description);
                 }
                 break;
             case X_POWER_MINUS_1:
@@ -80,11 +76,7 @@ public class OperationDescription {
                         description += previousAppend;
                     }
                 } else {
-                    if (description.equals("")) {
-                        description = betweenParentheses(getAccumulatorString(accumulator)) + getSymbol(operator);
-                    } else {
-                        description = betweenParentheses(description) + getSymbol(operator);
-                    }
+                    description = betweenParentheses(description.equals("") ? getAccumulatorString(accumulator) : description) + getSymbol(operator);
                 }
                 break;
             case TEN_POWER:
@@ -99,11 +91,7 @@ public class OperationDescription {
                         description += previousAppend;
                     }
                 } else {
-                    if (description.equals("")) {
-                        description = getSymbol(operator) + betweenParentheses(getAccumulatorString(accumulator));
-                    } else {
-                        description = getSymbol(operator) + betweenParentheses(description);
-                    }
+                    description = getSymbol(operator) + betweenParentheses(description.equals("") ? getAccumulatorString(accumulator) : description);
                 }
                 break;
             case ADDITION:
@@ -134,22 +122,20 @@ public class OperationDescription {
                         previousAppend = null;
                     }
                 } else {
-                    if (description.equals("")) {
-                        description = betweenParentheses(getAccumulatorString(accumulator)) + "^";
-                    } else {
-                        description = betweenParentheses(description) + "^";
-                    }
+                    description = betweenParentheses(description.equals("") ? getAccumulatorString(accumulator) : description) + "^";
                 }
                 break;
             case EQUALS:
                 if (!isPartialResult) {
-                    return;
+                    break;
                 }
 
-                if (previousAppend == null) {
-                    description += getAccumulatorString(accumulator);
+                if (previousAppend != null) {
+                    previousAppend = null;
+                    break;
                 }
-                previousAppend = null;
+
+                description += getAccumulatorString(accumulator);
                 break;
         }
     }
