@@ -49,14 +49,10 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
+                style="@style/cal_button"
                 android:textSize="20sp"
-                android:textAllCaps="false"
                 android:text="rand"
                 android:onClick="performOperation"
-                tools:ignore="ButtonStyle"
                 android:backgroundTint="@android:color/holo_orange_dark" />
 
             <Button
@@ -111,14 +107,9 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                android:textAllCaps="false"
+                style="@style/cal_button"
                 android:text="xʸ"
                 android:onClick="performOperation"
-                tools:ignore="ButtonStyle"
                 android:backgroundTint="@color/powers" />
 
             <Button
