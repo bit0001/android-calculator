@@ -164,18 +164,15 @@
                 android:backgroundTint="@color/third_power" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="7" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="8" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="9" />
 
             <Button
@@ -198,18 +195,15 @@
                 android:backgroundTint="@color/second_power" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="4" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="5" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="6" />
 
             <Button
@@ -232,18 +226,15 @@
                 android:backgroundTint="@color/second_power" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="1" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="2" />
 
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="3" />
 
             <Button
@@ -265,8 +256,7 @@
                 android:text="x⁻¹"
                 android:backgroundTint="@color/parenthesis" />
             <Button
-                style="@style/cal_button"
-                android:onClick="touchDigit"
+                style="@style/digit"
                 android:text="0" />
 
 
