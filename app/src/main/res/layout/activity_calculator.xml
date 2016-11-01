@@ -245,26 +245,17 @@
                 android:id="@+id/button4" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="7" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="8" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="9" />
 
@@ -297,26 +288,17 @@
                 android:id="@+id/button3" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="4" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="5" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="6" />
 
@@ -349,26 +331,17 @@
                 android:id="@+id/button6" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="1" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="2" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="3" />
 
@@ -401,26 +374,18 @@
                 tools:ignore="NestedWeights"
                 android:backgroundTint="@color/parenthesis" />
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="touchDigit"
                 android:text="0" />
 
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="addDecimalPoint"
                 android:text="." />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
+                style="@style/cal_button"
                 android:textSize="24sp"
                 android:onClick="performOperation"
                 android:text="+/-" />
