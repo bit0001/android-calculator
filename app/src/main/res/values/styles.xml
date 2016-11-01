@@ -25,4 +25,10 @@
         <item name="android:backgroundTint" tools:targetApi="lollipop">@color/constant</item>
     </style>
 
+    <style name="exponential" parent="cal_button">
+        <item name="android:backgroundTint" tools:targetApi="lollipop">?android:attr/textColorHighlight</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
 </resources>
