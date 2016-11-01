@@ -15,8 +15,7 @@
         <item name="android:layout_weight">1</item>
     </style>
 
-    <style name="purple">
-        <item name="android:textSize">25sp</item>
+    <style name="purple" parent="cal_button">
         <item name="android:backgroundTint" tools:targetApi="lollipop">@android:color/holo_purple</item>
     </style>
 
