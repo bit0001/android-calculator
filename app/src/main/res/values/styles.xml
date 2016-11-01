@@ -20,22 +20,26 @@
         <item name="android:onClick">touchDigit</item>
     </style>
 
-    <style name="purple" parent="cal_button">
+    <style name="operation" parent="cal_button">
+        <item name="android:onClick">performOperation</item>
+    </style>
+
+    <style name="purple" parent="operation">
         <item name="android:backgroundTint" tools:targetApi="lollipop">@android:color/holo_purple</item>
         <item name="android:textColor">@android:color/background_light</item>
     </style>
 
-    <style name="constant" parent="cal_button">
+    <style name="constant" parent="operation">
         <item name="android:backgroundTint" tools:targetApi="lollipop">@color/constant</item>
     </style>
 
-    <style name="exponential" parent="cal_button">
+    <style name="exponential" parent="operation">
         <item name="android:backgroundTint" tools:targetApi="lollipop">?android:attr/textColorHighlight</item>
         <item name="android:textColor">@android:color/darker_gray</item>
         <item name="android:textSize">22sp</item>
     </style>
 
-    <style name="trig" parent="cal_button">
+    <style name="trig" parent="operation">
         <item name="android:textSize">22sp</item>
         <item name="android:backgroundTint" tools:targetApi="lollipop">?android:attr/colorEdgeEffect</item>
         <item name="android:textColor">@color/light_gray</item>
