@@ -71,10 +71,7 @@
                 android:text="tan" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:onClick="clearEverything"
                 android:text="C"
                 android:backgroundTint="@android:color/holo_red_light"
@@ -110,10 +107,7 @@
                 android:text="log" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
+                style="@style/cal_button"
                 android:text="←"
                 android:backgroundTint="?attr/colorAccent"
                 android:textColor="@android:color/background_light"
@@ -129,16 +123,10 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                android:textAllCaps="false"
+                style="@style/cal_button"
                 android:text="∛"
                 android:onClick="performOperation"
-                tools:ignore="ButtonStyle"
-                android:backgroundTint="@color/third_power"
-                android:id="@+id/button5" />
+                android:backgroundTint="@color/third_power" />
 
             <Button
                 style="@style/constant"
@@ -170,15 +158,10 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                android:textAllCaps="false"
+                style="@style/cal_button"
                 android:onClick="performOperation"
                 android:text="x³"
-                android:backgroundTint="@color/third_power"
-                android:id="@+id/button4" />
+                android:backgroundTint="@color/third_power" />
 
             <Button
                 style="@style/cal_button"
@@ -209,15 +192,10 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                android:textAllCaps="false"
+                style="@style/cal_button"
                 android:onClick="performOperation"
                 android:text="√"
-                android:backgroundTint="@color/second_power"
-                android:id="@+id/button3" />
+                android:backgroundTint="@color/second_power" />
 
             <Button
                 style="@style/cal_button"
@@ -248,15 +226,10 @@
             android:layout_height="wrap_content">
 
             <Button
+                style="@style/cal_button"
                 android:onClick="performOperation"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
                 android:text="x²"
-                android:textAllCaps="false"
-                android:backgroundTint="@color/second_power"
-                android:id="@+id/button6" />
+                android:backgroundTint="@color/second_power" />
 
             <Button
                 style="@style/cal_button"
@@ -276,8 +249,7 @@
             <Button
                 style="@style/purple"
                 android:onClick="performOperation"
-                android:text="−"
-                android:id="@+id/button" />
+                android:text="−" />
 
         </LinearLayout>
 
@@ -288,14 +260,9 @@
             android:layout_height="wrap_content">
 
             <Button
+                style="@style/cal_button"
                 android:onClick="performOperation"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                android:textAllCaps="false"
                 android:text="x⁻¹"
-                tools:ignore="NestedWeights"
                 android:backgroundTint="@color/parenthesis" />
             <Button
                 style="@style/cal_button"
