@@ -218,12 +218,8 @@
 
             <Button
                 style="@style/purple"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
                 android:onClick="performOperation"
-                android:text="×"
-                android:textColor="@android:color/background_light" />
+                android:text="×" />
 
         </LinearLayout>
 
@@ -261,12 +257,8 @@
 
             <Button
                 style="@style/purple"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
                 android:onClick="performOperation"
-                android:text="÷"
-                android:textColor="@android:color/background_light" />
+                android:text="÷" />
 
         </LinearLayout>
 
@@ -304,12 +296,8 @@
 
             <Button
                 style="@style/purple"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
                 android:onClick="performOperation"
-                android:text="+"
-                android:textColor="@android:color/background_light" />
+                android:text="+" />
 
         </LinearLayout>
 
@@ -347,13 +335,9 @@
 
             <Button
                 style="@style/purple"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
                 android:onClick="performOperation"
                 android:text="−"
-                android:id="@+id/button"
-                android:textColor="@android:color/background_light" />
+                android:id="@+id/button" />
 
         </LinearLayout>
 
@@ -392,13 +376,8 @@
 
             <Button
                 style="@style/purple"
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
                 android:onClick="performOperation"
-                android:text="="
-                android:id="@+id/button2"
-                android:textColor="@android:color/background_light" />
+                android:text="=" />
 
         </LinearLayout>
 
