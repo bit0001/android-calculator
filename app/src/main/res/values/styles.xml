@@ -17,6 +17,7 @@
 
     <style name="purple" parent="cal_button">
         <item name="android:backgroundTint" tools:targetApi="lollipop">@android:color/holo_purple</item>
+        <item name="android:textColor">@android:color/background_light</item>
     </style>
 
 </resources>
