@@ -113,36 +113,19 @@
                 android:backgroundTint="@color/powers" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                android:textAllCaps="false"
+                style="@style/constant"
                 android:onClick="performOperation"
-                android:text="π"
-                android:backgroundTint="@color/constant" />
+                android:text="π" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="22sp"
-                android:textAllCaps="false"
+                style="@style/exponential"
                 android:onClick="performOperation"
-                android:text="10ˣ"
-                android:backgroundTint="?android:attr/textColorHighlight"
-                android:textColor="@android:color/darker_gray" />
+                android:text="10ˣ" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="22sp"
+                style="@style/exponential"
                 android:onClick="performOperation"
-                android:textAllCaps="false"
-                android:text="log"
-                android:backgroundTint="?android:attr/textColorHighlight"
-                android:textColor="@android:color/darker_gray" />
+                android:text="log" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -176,36 +159,20 @@
                 android:id="@+id/button5" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                android:textAllCaps="false"
+                style="@style/constant"
                 android:onClick="performOperation"
-                android:text="e"
-                android:backgroundTint="@color/constant" />
+                android:text="e" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="25sp"
-                android:textAllCaps="false"
+                style="@style/exponential"
+                android:textSize="24sp"
                 android:onClick="performOperation"
-                android:text="eˣ"
-                android:backgroundTint="?android:attr/textColorHighlight"
-                android:textColor="@android:color/darker_gray" />
+                android:text="eˣ" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:textSize="22sp"
+                style="@style/exponential"
                 android:onClick="performOperation"
-                android:textAllCaps="false"
-                android:text="ln"
-                android:backgroundTint="?android:attr/textColorHighlight"
-                android:textColor="@android:color/darker_gray" />
+                android:text="ln" />
 
             <Button
                 style="@style/purple"
