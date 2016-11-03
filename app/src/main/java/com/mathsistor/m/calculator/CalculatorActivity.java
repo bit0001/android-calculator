@@ -103,8 +103,7 @@ public class CalculatorActivity extends AppCompatActivity {
     public void restore(View view) {
         if (savedProgram !=  null) {
             brain.setInternalProgram(savedProgram);
-            result_display.setText(getResultFormatted());
-            operation_display.setText(brain.getDescription() + (brain.isPartialResult() ? "..." : "="));
+            updateDisplays();
         }
     }
 }

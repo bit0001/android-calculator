@@ -14,17 +14,13 @@ public class OperationDescription {
     private String previousAppend;
     private String baseDescription;
     private String description;
-    private HashMap<String, Operation> operations;
-    private HashMap<String, String> symbols;
 
     public OperationDescription() {
-        operations = Util.OPERATIONS;
-        symbols = Util.SYMBOLS;
         description = "";
     }
 
     public void update(String operator, Double accumulator, boolean isPartialResult) {
-        Operation operation = operations.get(operator);
+        Operation operation = Util.OPERATIONS.get(operator);
 
         switch (operation) {
             case UNARY_NEGATIVE:
@@ -158,7 +154,7 @@ public class OperationDescription {
 
     @NonNull
     private String getSymbol(String operator) {
-        return symbols.get(operator);
+        return Util.SYMBOLS.get(operator);
     }
 
 }

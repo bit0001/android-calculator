@@ -5,22 +5,16 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
-/**
- * Created by m on 10/29/2016.
- */
 
 public class CalculatorBrain {
 
     private double accumulator;
     private PendingBinaryOperationInfo pending;
     private OperationDescription description;
-    private HashMap<String, Operation> operations;
     private ArrayList<Object> internalProgram;
 
     CalculatorBrain() {
-        operations = Util.OPERATIONS;
         description = new OperationDescription();
         internalProgram = new ArrayList<>();
     }
@@ -37,7 +31,7 @@ public class CalculatorBrain {
     @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void performOperation(String symbol) {
-        Operation operation = operations.get(symbol);
+        Operation operation = Util.OPERATIONS.get(symbol);
         if (operation != null) {
             internalProgram.add(symbol);
             description.update(symbol, accumulator, isPartialResult());
