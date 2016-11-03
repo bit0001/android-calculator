@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -16,14 +17,18 @@ public class CalculatorBrain {
     private PendingBinaryOperationInfo pending;
     private OperationDescription description;
     private HashMap<String, Operation> operations;
+    private ArrayList<Object> internalProgram;
 
     CalculatorBrain() {
         operations = Util.OPERATIONS;
         description = new OperationDescription();
+        internalProgram = new ArrayList<>();
     }
 
     public void setOperand(double operand) {
         accumulator = operand;
+        internalProgram.add(operand);
+
         if (!isPartialResult()) {
             description = new OperationDescription();
         }
@@ -33,8 +38,8 @@ public class CalculatorBrain {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void performOperation(String symbol) {
         Operation operation = operations.get(symbol);
-
         if (operation != null) {
+            internalProgram.add(symbol);
             description.update(symbol, accumulator, isPartialResult());
             computeResult(operation);
         }
@@ -97,5 +102,27 @@ public class CalculatorBrain {
 
     public boolean isPartialResult() {
         return pending != null;
+    }
+
+    public ArrayList<Object> getInternalProgram() {
+        return internalProgram;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void setInternalProgram(ArrayList<Object> internalProgram) {
+        clear();
+        for (Object op: internalProgram) {
+            if (Double.class.isInstance(op)) {
+                setOperand((Double) op);
+            } else if (String.class.isInstance(op)) {
+                performOperation((String) op);
+            }
+        }
+    }
+
+    private void clear() {
+        accumulator = 0;
+        pending = null;
+        internalProgram.clear();
     }
 }

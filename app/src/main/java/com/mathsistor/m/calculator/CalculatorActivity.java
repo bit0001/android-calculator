@@ -4,11 +4,13 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class CalculatorActivity extends AppCompatActivity {
 
@@ -16,6 +18,7 @@ public class CalculatorActivity extends AppCompatActivity {
     private TextView result_display;
     private CalculatorBrain brain;
     private TextView operation_display;
+    private ArrayList<Object> savedProgram;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +92,16 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void save(View view) {
+        Log.d("program", String.valueOf(brain.getInternalProgram()));
+        savedProgram = brain.getInternalProgram();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void restore(View view) {
+        if (savedProgram !=  null) {
+            brain.setInternalProgram(savedProgram);
+            result_display.setText(getResultFormatted());
+            operation_display.setText(brain.getDescription() + (brain.isPartialResult() ? "..." : "="));
+        }
     }
 }
