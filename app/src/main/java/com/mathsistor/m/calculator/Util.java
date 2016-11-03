@@ -1,5 +1,6 @@
 package com.mathsistor.m.calculator;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 /**
@@ -44,4 +45,7 @@ public abstract class Util {
         SYMBOLS.put("10" + "\u02e3", "10^");
     }
 
+    public static String formatNumber(Double number) {
+        return new DecimalFormat("#0.######").format(number);
+    }
 }

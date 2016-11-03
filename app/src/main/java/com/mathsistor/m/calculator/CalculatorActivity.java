@@ -60,7 +60,7 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private String getResultFormatted() {
-        return new DecimalFormat("#0.######").format(brain.getResult());
+        return Util.formatNumber(brain.getResult());
     }
 
     public void clearEverything(View view) {
@@ -80,14 +80,16 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void delete(View view) {
-        StringBuilder currentText = new StringBuilder(getDisplayString());
-        currentText.deleteCharAt(currentText.length() - 1);
+        if (userIsInTheMiddleOfTyping) {
+            StringBuilder currentText = new StringBuilder(getDisplayString());
+            currentText.deleteCharAt(currentText.length() - 1);
 
-        if (currentText.toString().isEmpty()) {
-            result_display.setText("0");
-            userIsInTheMiddleOfTyping = false;
-        } else {
-            result_display.setText(currentText.toString());
+            if (currentText.toString().isEmpty()) {
+                result_display.setText("0");
+                userIsInTheMiddleOfTyping = false;
+            } else {
+                result_display.setText(currentText.toString());
+            }
         }
     }
 

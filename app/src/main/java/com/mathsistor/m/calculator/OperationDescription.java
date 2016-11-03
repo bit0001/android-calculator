@@ -143,8 +143,7 @@ public class OperationDescription {
         } else if (accumulator == Math.E) {
             return  "e";
         } else {
-            NumberFormat formatter = new DecimalFormat("#0.######");
-            return formatter.format(accumulator);
+            return Util.formatNumber(accumulator);
         }
     }
 
