@@ -2,10 +2,6 @@ package com.mathsistor.m.calculator;
 
 import android.support.annotation.NonNull;
 
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.HashMap;
-
 public class OperationDescription {
     private String previousAppend;
     private String baseDescription;
