@@ -46,9 +46,7 @@ public enum Operation {
         this.binaryOperator = binaryOperator;
     }
 
-    Operation() {
-
-    }
+    Operation() {}
 
     Operation(DoubleSupplier supplier) {
         this.supplier = supplier;
