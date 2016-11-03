@@ -19,12 +19,6 @@
         android:background="@android:color/holo_green_dark"
         android:layout_marginBottom="5dp" />
 
-    <TextView
-        style="@style/display"
-        android:id="@+id/operation_display"
-        android:text=""
-        android:background="@android:color/holo_blue_dark" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -42,11 +36,13 @@
 
             <Button
                 style="@style/program"
+                android:onClick="save"
                 android:text="save" />
 
             <Button
                 style="@style/program"
                 android:textSize="14sp"
+                android:onClick="restore"
                 android:text="restore" />
 
             <Button
@@ -253,5 +249,11 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        style="@style/display"
+        android:id="@+id/operation_display"
+        android:text=""
+        android:background="@android:color/holo_blue_dark" />
 
 </LinearLayout>

@@ -88,4 +88,9 @@ public class CalculatorActivity extends AppCompatActivity {
         return result_display.getText().toString();
     }
 
+    public void save(View view) {
+    }
+
+    public void restore(View view) {
+    }
 }
