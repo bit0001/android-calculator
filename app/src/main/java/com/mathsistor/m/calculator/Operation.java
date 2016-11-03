@@ -4,10 +4,6 @@ import java.util.function.DoubleBinaryOperator;
 import java.util.function.DoubleSupplier;
 import java.util.function.DoubleUnaryOperator;
 
-/**
- * Created by m on 10/29/2016.
- */
-
 public enum Operation {
     PI_CONSTANT(Math.PI),
     E_CONSTANT(Math.E),

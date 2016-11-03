@@ -6,10 +6,6 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.HashMap;
 
-/**
- * Created by m on 10/31/2016.
- */
-
 public class OperationDescription {
     private String previousAppend;
     private String baseDescription;

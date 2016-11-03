@@ -2,10 +2,6 @@ package com.mathsistor.m.calculator;
 
 import java.util.function.DoubleBinaryOperator;
 
-/**
- * Created by m on 10/29/2016.
- */
-
 public class PendingBinaryOperationInfo {
     private DoubleBinaryOperator binaryOperator;
     private double firstOperand;

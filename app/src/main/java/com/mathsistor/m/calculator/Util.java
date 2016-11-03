@@ -3,9 +3,6 @@ package com.mathsistor.m.calculator;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
-/**
- * Created by m on 10/31/2016.
- */
 public abstract class Util {
 
     public static HashMap<String, Operation> OPERATIONS;
