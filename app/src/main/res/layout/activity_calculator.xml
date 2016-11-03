@@ -19,6 +19,12 @@
         android:background="@android:color/holo_green_dark"
         android:layout_marginBottom="5dp" />
 
+    <TextView
+        style="@style/display"
+        android:id="@+id/operation_display"
+        android:text=""
+        android:background="@android:color/holo_blue_dark" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -249,11 +255,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <TextView
-        style="@style/display"
-        android:id="@+id/operation_display"
-        android:text=""
-        android:background="@android:color/holo_blue_dark" />
 
 </LinearLayout>
