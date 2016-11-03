@@ -51,6 +51,10 @@ public class CalculatorActivity extends AppCompatActivity {
 
         String operator = ((Button) view).getText().toString();
         brain.performOperation(operator);
+        updateDisplays();
+    }
+
+    private void updateDisplays() {
         result_display.setText(getResultFormatted());
         operation_display.setText(brain.getDescription() + (brain.isPartialResult() ? "..." : "="));
     }
