@@ -41,17 +41,12 @@
                 android:text="shift" />
 
             <Button
-                style="@style/cal_button"
-                android:textSize="18sp"
-                android:backgroundTint="#4C4C4C"
-                android:textColor="@android:color/white"
+                style="@style/program"
                 android:text="save" />
 
             <Button
-                style="@style/cal_button"
+                style="@style/program"
                 android:textSize="14sp"
-                android:backgroundTint="#4C4C4C"
-                android:textColor="@android:color/white"
                 android:text="restore" />
 
             <Button
