@@ -55,17 +55,11 @@
                 android:text="restore" />
 
             <Button
-                style="@style/cal_button"
-                android:backgroundTint="#800080"
-                android:textColor="@android:color/white"
-                android:textSize="20dp"
+                style="@style/variable"
                 android:text="→M" />
 
             <Button
-                style="@style/cal_button"
-                android:backgroundTint="#800080"
-                android:textColor="@android:color/white"
-                android:textSize="20dp"
+                style="@style/variable"
                 android:text="M" />
 
         </LinearLayout>
