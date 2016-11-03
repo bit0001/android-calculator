@@ -92,7 +92,6 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     public void save(View view) {
-        Log.d("program", String.valueOf(brain.getInternalProgram()));
         savedProgram = brain.getInternalProgram();
     }
 
