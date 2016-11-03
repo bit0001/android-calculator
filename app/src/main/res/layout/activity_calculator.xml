@@ -34,6 +34,46 @@
             style="@style/horizontal">
 
             <Button
+                style="@style/cal_button"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#232323"
+                android:text="shift" />
+
+            <Button
+                style="@style/cal_button"
+                android:textSize="18sp"
+                android:backgroundTint="#4C4C4C"
+                android:textColor="@android:color/white"
+                android:text="save" />
+
+            <Button
+                style="@style/cal_button"
+                android:textSize="14sp"
+                android:backgroundTint="#4C4C4C"
+                android:textColor="@android:color/white"
+                android:text="restore" />
+
+            <Button
+                style="@style/cal_button"
+                android:backgroundTint="#800080"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:text="→M" />
+
+            <Button
+                style="@style/cal_button"
+                android:backgroundTint="#800080"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                android:text="M" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/horizontal">
+
+            <Button
                 style="@style/operation"
                 android:textSize="20sp"
                 android:text="rand"
