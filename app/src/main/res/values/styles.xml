@@ -62,6 +62,12 @@
         <item name="android:textColor">@color/light_gray</item>
     </style>
 
+    <style name="program" parent="cal_button">
+        <item name="android:textSize">18sp</item>
+        <item name="android:backgroundTint" tools:targetApi="lollipop">#4C4C4C</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
     <style name="variable" parent="cal_button">
         <item name="android:backgroundTint" tools:targetApi="lollipop">#800080</item>
         <item name="android:textColor">@android:color/white</item>
