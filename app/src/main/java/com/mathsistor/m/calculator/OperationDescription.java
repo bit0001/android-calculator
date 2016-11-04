@@ -22,7 +22,6 @@ public class OperationDescription {
 
     public void update(String symbol, Double accumulator, boolean isPartialResult) {
         Operation operation = Util.OPERATIONS.get(symbol);
-
         if (Constant.class.isInstance(operation)) {
         } else if (Unary.class.isInstance(operation)) {
             if (isPartialResult) {
@@ -61,7 +60,6 @@ public class OperationDescription {
 
             description += getAccumulatorString(accumulator);
         }
-
     }
 
     private String getAccumulatorString(Double accumulator) {
