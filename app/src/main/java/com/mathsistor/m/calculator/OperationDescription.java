@@ -1,7 +1,5 @@
 package com.mathsistor.m.calculator;
 
-import android.support.annotation.NonNull;
-
 import com.mathsistor.m.calculator.operation.Binary;
 import com.mathsistor.m.calculator.operation.Constant;
 import com.mathsistor.m.calculator.operation.Equal;
@@ -16,6 +14,10 @@ public class OperationDescription {
 
     public OperationDescription() {
         description = "";
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void update(String symbol, Double accumulator, boolean isPartialResult) {
@@ -62,11 +64,6 @@ public class OperationDescription {
 
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    @NonNull
     private String getAccumulatorString(Double accumulator) {
         if (accumulator == Math.PI) {
             return  "\u03c0";
