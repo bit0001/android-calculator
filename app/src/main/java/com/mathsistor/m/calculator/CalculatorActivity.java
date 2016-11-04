@@ -38,6 +38,11 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void touchDigit(View view) {
         String digit = ((Button) view).getText().toString();
+
+        if (getDisplayString().equals("0") && digit.equals("0")) {
+            return;
+        }
+
         result_display.setText(userIsInTheMiddleOfTyping ? getDisplayString() + digit : digit);
         userIsInTheMiddleOfTyping = true;
     }
