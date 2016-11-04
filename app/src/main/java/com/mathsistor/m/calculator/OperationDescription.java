@@ -23,11 +23,6 @@ public class OperationDescription {
     public void update(String symbol, Double accumulator, boolean isPartialResult) {
         Operation operation = Util.OPERATIONS.get(symbol);
         if (Constant.class.isInstance(operation)) {
-            if (description.equals("\u03c0") || description.equals("e")) {
-                description = symbol;
-                return;
-            }
-            description += symbol;
         } else if (Unary.class.isInstance(operation)) {
             if (isPartialResult) {
                 if (previousAppend != null) {
@@ -63,9 +58,6 @@ public class OperationDescription {
                 return;
             }
 
-            if (getAccumulatorString(accumulator).equals("e") || getAccumulatorString(accumulator).equals("\u03c0")) {
-                return;
-            }
             description += getAccumulatorString(accumulator);
         }
     }

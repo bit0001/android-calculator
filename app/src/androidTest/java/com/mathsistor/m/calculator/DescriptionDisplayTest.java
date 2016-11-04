@@ -178,7 +178,7 @@ public class DescriptionDisplayTest {
 
     @Test
     public void testPi() throws Exception {
-        expectedDisplayedDescription = "\u03c0" + "=";
+        expectedDisplayedDescription = "=";
         expectedDisplayedResult = Util.formatNumber(Math.PI);
 
         onView(withId(R.id.pi_letter)).perform(click());
@@ -186,7 +186,7 @@ public class DescriptionDisplayTest {
 
     @Test
     public void testPiPi() throws Exception {
-        expectedDisplayedDescription = "\u03c0" + "=";
+        expectedDisplayedDescription = "=";
         expectedDisplayedResult = Util.formatNumber(Math.PI);
 
         onView(withId(R.id.pi_letter)).perform(click());
@@ -195,17 +195,16 @@ public class DescriptionDisplayTest {
 
     @Test
     public void testEPi() throws Exception {
-        expectedDisplayedDescription = "\u03c0" + "=";
+        expectedDisplayedDescription = "=";
         expectedDisplayedResult = Util.formatNumber(Math.PI);
 
         onView(withId(R.id.e_letter)).perform(click());
         onView(withId(R.id.pi_letter)).perform(click());
-
     }
 
     @Test
     public void testPiE() throws Exception {
-        expectedDisplayedDescription = "e" + "=";
+        expectedDisplayedDescription = "=";
         expectedDisplayedResult = Util.formatNumber(Math.E);
 
         onView(withId(R.id.pi_letter)).perform(click());
@@ -215,7 +214,7 @@ public class DescriptionDisplayTest {
 
     @Test
     public void testConstantBinaryConstant() throws Exception {
-        expectedDisplayedDescription = "\u03c0" + "+" + "\u03c0" + "...";
+        expectedDisplayedDescription = "\u03c0" + "+" + "...";
         expectedDisplayedResult = Util.formatNumber(Math.PI);
 
         onView(withId(R.id.pi_letter)).perform(click());
@@ -233,4 +232,24 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.pi_letter)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
     }
+
+    @Test
+    public void testConstantUnary() throws Exception {
+        expectedDisplayedDescription = "\u221a" + "(" + "\u03c0" + ")=";
+        expectedDisplayedResult = Util.formatNumber(Math.sqrt(Math.PI));
+
+        onView(withId(R.id.pi_letter)).perform(click());
+        onView(withId(R.id.square_root_symbol)).perform(click());
+    }
+
+    @Test
+    public void testConstantUnaryEqual() throws Exception {
+        expectedDisplayedDescription = "\u221a" + "(" + "\u03c0" + ")=";
+        expectedDisplayedResult = Util.formatNumber(Math.sqrt(Math.PI));
+
+        onView(withId(R.id.pi_letter)).perform(click());
+        onView(withId(R.id.square_root_symbol)).perform(click());
+        onView(withId(R.id.equal_sign)).perform(click());
+    }
+
 }
