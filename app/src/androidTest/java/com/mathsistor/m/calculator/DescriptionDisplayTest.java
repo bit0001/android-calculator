@@ -212,4 +212,25 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.e_letter)).perform(click());
 
     }
+
+    @Test
+    public void testConstantBinaryConstant() throws Exception {
+        expectedDisplayedDescription = "\u03c0" + "+" + "\u03c0" + "...";
+        expectedDisplayedResult = Util.formatNumber(Math.PI);
+
+        onView(withId(R.id.pi_letter)).perform(click());
+        onView(withId(R.id.plus_sign)).perform(click());
+        onView(withId(R.id.pi_letter)).perform(click());
+    }
+
+    @Test
+    public void testConstantBinaryConstantEqual() throws Exception {
+        expectedDisplayedDescription = "\u03c0" + "+" + "\u03c0" + "=";
+        expectedDisplayedResult = Util.formatNumber(Math.PI + Math.PI);
+
+        onView(withId(R.id.pi_letter)).perform(click());
+        onView(withId(R.id.plus_sign)).perform(click());
+        onView(withId(R.id.pi_letter)).perform(click());
+        onView(withId(R.id.equal_sign)).perform(click());
+    }
 }
