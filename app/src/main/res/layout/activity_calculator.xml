@@ -102,6 +102,7 @@
 
             <Button
                 style="@style/constant"
+                android:id="@+id/pi_letter"
                 android:text="π" />
 
             <Button
@@ -145,6 +146,7 @@
 
             <Button
                 style="@style/purple"
+                android:id="@+id/multiplication_sign"
                 android:text="×" />
 
         </LinearLayout>
@@ -159,6 +161,7 @@
 
             <Button
                 style="@style/digit"
+                android:id="@+id/digit_7"
                 android:text="7" />
 
             <Button
@@ -167,6 +170,7 @@
 
             <Button
                 style="@style/digit"
+                android:id="@+id/digit_9"
                 android:text="9" />
 
             <Button
@@ -180,23 +184,28 @@
 
             <Button
                 style="@style/operation"
+                android:id="@+id/square_root_symbol"
                 android:text="√"
                 android:backgroundTint="@color/second_power" />
 
             <Button
                 style="@style/digit"
+                android:id="@+id/digit_4"
                 android:text="4" />
 
             <Button
                 style="@style/digit"
+                android:id="@+id/digit_5"
                 android:text="5" />
 
             <Button
                 style="@style/digit"
+                android:id="@+id/digit_6"
                 android:text="6" />
 
             <Button
                 style="@style/purple"
+                android:id="@+id/plus_sign"
                 android:text="+" />
 
         </LinearLayout>
@@ -219,7 +228,8 @@
 
             <Button
                 style="@style/digit"
-                android:text="3" />
+                android:text="3"
+                android:id="@+id/digit_3" />
 
             <Button
                 style="@style/purple"
@@ -251,6 +261,7 @@
 
             <Button
                 style="@style/purple"
+                android:id="@+id/equal_sign"
                 android:text="=" />
 
         </LinearLayout>
