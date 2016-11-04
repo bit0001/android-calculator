@@ -4,6 +4,13 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+import com.mathsistor.m.calculator.operation.Binary;
+import com.mathsistor.m.calculator.operation.Constant;
+import com.mathsistor.m.calculator.operation.Equal;
+import com.mathsistor.m.calculator.operation.Operation;
+import com.mathsistor.m.calculator.operation.Random;
+import com.mathsistor.m.calculator.operation.Unary;
+
 import java.util.ArrayList;
 
 
@@ -41,40 +48,17 @@ public class CalculatorBrain {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void computeResult(Operation operation) {
-        switch (operation) {
-            case PI_CONSTANT:
-            case E_CONSTANT:
-                accumulator = operation.getConstant();
-                break;
-            case UNARY_NEGATIVE:
-            case X_POWER_MINUS_1:
-            case SQUARE_ROOT:
-            case CUBE_ROOT:
-            case SQUARE:
-            case CUBE:
-            case SIN:
-            case COS:
-            case TAN:
-            case EXP:
-            case TEN_POWER:
-            case LOG10:
-            case LN:
-                accumulator = operation.getUnaryOperator().applyAsDouble(accumulator);
-                break;
-            case RANDOM:
-                accumulator = operation.getSupplier().getAsDouble();
-                break;
-            case ADDITION:
-            case SUBTRACTION:
-            case MULTIPLICATION:
-            case DIVISION:
-            case N_POWER:
-            case N_ROOT:
-                executePendingBinaryOperation();
-                pending = new PendingBinaryOperationInfo(operation.getBinaryOperator(), accumulator);
-                break;
-            case EQUALS:
-                executePendingBinaryOperation();
+        if (Constant.class.isInstance(operation)) {
+            accumulator = ((Constant) operation).getConstant();
+        } else if (Unary.class.isInstance(operation)) {
+            accumulator = ((Unary) operation).getUnaryOperator().applyAsDouble(accumulator);
+        } else if (Binary.class.isInstance(operation)) {
+            executePendingBinaryOperation();
+            pending = new PendingBinaryOperationInfo(((Binary) operation).getBinaryOperator(), accumulator);
+        } else if (Random.class.isInstance(operation)) {
+            accumulator = ((Random) operation).getRandomNumber();
+        } else if (Equal.class.isInstance(operation)) {
+            executePendingBinaryOperation();
         }
     }
 

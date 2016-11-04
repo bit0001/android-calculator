@@ -1,5 +1,12 @@
 package com.mathsistor.m.calculator;
 
+import com.mathsistor.m.calculator.operation.Binary;
+import com.mathsistor.m.calculator.operation.Constant;
+import com.mathsistor.m.calculator.operation.Equal;
+import com.mathsistor.m.calculator.operation.Operation;
+import com.mathsistor.m.calculator.operation.Random;
+import com.mathsistor.m.calculator.operation.Unary;
+
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
@@ -10,29 +17,29 @@ public abstract class Util {
 
     static  {
         OPERATIONS =  new HashMap<>();
-        OPERATIONS.put("\u03c0", Operation.PI_CONSTANT);
-        OPERATIONS.put("e", Operation.E_CONSTANT);
-        OPERATIONS.put("+/-", Operation.UNARY_NEGATIVE);
-        OPERATIONS.put("\u221a", Operation.SQUARE_ROOT);
-        OPERATIONS.put("\u221b", Operation.CUBE_ROOT);
-        OPERATIONS.put("x" + "\u207b" + "\u00b9", Operation.X_POWER_MINUS_1);
-        OPERATIONS.put("x" + "\u00b2", Operation.SQUARE);
-        OPERATIONS.put("x" + "\u00b3", Operation.CUBE);
-        OPERATIONS.put("sin", Operation.SIN);
-        OPERATIONS.put("cos", Operation.COS);
-        OPERATIONS.put("tan", Operation.TAN);
-        OPERATIONS.put("e" + "\u02e3", Operation.EXP);
-        OPERATIONS.put("10" + "\u02e3", Operation.TEN_POWER);
-        OPERATIONS.put("log", Operation.LOG10);
-        OPERATIONS.put("ln", Operation.LN);
-        OPERATIONS.put("+", Operation.ADDITION);
-        OPERATIONS.put("\u2212", Operation.SUBTRACTION);
-        OPERATIONS.put("\u00d7", Operation.MULTIPLICATION);
-        OPERATIONS.put("\u00f7", Operation.DIVISION);
-        OPERATIONS.put("x" + "\u02b8", Operation.N_POWER);
-        OPERATIONS.put("\u02b8" + "\u221a" + "x", Operation.N_ROOT);
-        OPERATIONS.put("rand", Operation.RANDOM);
-        OPERATIONS.put("=", Operation.EQUALS);
+        OPERATIONS.put("\u03c0", new Constant(Math.PI));
+        OPERATIONS.put("e", new Constant(Math.E));
+        OPERATIONS.put("+/-", new Unary(a -> -a));
+        OPERATIONS.put("\u221a", new Unary(Math::sqrt));
+        OPERATIONS.put("\u221b", new Unary(a -> Math.pow(a, 1.0 / 3)));
+        OPERATIONS.put("x" + "\u207b" + "\u00b9", new Unary(a -> 1 / a));
+        OPERATIONS.put("x" + "\u00b2", new Unary(a -> a * a));
+        OPERATIONS.put("x" + "\u00b3", new Unary(a -> a * a * a));
+        OPERATIONS.put("sin", new Unary(Math::sin));
+        OPERATIONS.put("cos", new Unary(Math::cos));
+        OPERATIONS.put("tan", new Unary(Math::tan));
+        OPERATIONS.put("e" + "\u02e3", new Unary(Math::exp));
+        OPERATIONS.put("10" + "\u02e3", new Unary(a -> Math.pow(a, 10)));
+        OPERATIONS.put("log", new Unary(Math::log10));
+        OPERATIONS.put("ln", new Unary(Math::log));
+        OPERATIONS.put("+", new Binary((a, b) -> a + b));
+        OPERATIONS.put("\u2212", new Binary((a, b) -> a - b));
+        OPERATIONS.put("\u00d7", new Binary((a, b) -> a * b));
+        OPERATIONS.put("\u00f7", new Binary((a, b) -> a / b));
+        OPERATIONS.put("x" + "\u02b8", new Binary(Math::pow));
+        OPERATIONS.put("\u02b8" + "\u221a" + "x", new Binary((a, b) -> Math.pow(a, 1 / b)));
+        OPERATIONS.put("rand", new Random());
+        OPERATIONS.put("=", new Equal());
 
         SYMBOLS = new HashMap<>();
         SYMBOLS.put("x" + "\u207b" + "\u00b9", "\u207b" + "\u00b9");
