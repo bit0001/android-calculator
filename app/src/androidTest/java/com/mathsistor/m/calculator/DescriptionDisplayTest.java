@@ -3,6 +3,7 @@ package com.mathsistor.m.calculator;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,13 @@ public class DescriptionDisplayTest {
     public ActivityTestRule<CalculatorActivity> calculatorActivityActivityTestRule =
             new ActivityTestRule<>(CalculatorActivity.class);
 
+    @After
+    public void assertValuesOnDisplays() {
+        onView(withId(R.id.operation_display)).check(matches(withText(expectedDisplayedDescription)));
+        onView(withId(R.id.result_display)).check(matches(withText(expectedDisplayedResult)));
+    }
+
+
     @Test
     public void test7Plus() throws Exception {
         expectedDisplayedDescription = "7+...";
@@ -31,8 +39,6 @@ public class DescriptionDisplayTest {
 
         onView(withId(R.id.digit_7)).perform(click());
         onView(withId(R.id.plus_sign)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -43,13 +49,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.digit_7)).perform(click());
         onView(withId(R.id.plus_sign)).perform(click());
         onView(withId(R.id.digit_9)).perform(click());
-
-        assertValuesOnDisplays();
-    }
-
-    private void assertValuesOnDisplays() {
-        onView(withId(R.id.operation_display)).check(matches(withText(expectedDisplayedDescription)));
-        onView(withId(R.id.result_display)).check(matches(withText(expectedDisplayedResult)));
     }
 
     @Test
@@ -61,8 +60,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.plus_sign)).perform(click());
         onView(withId(R.id.digit_9)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -75,8 +72,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.digit_9)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
         onView(withId(R.id.square_root_symbol)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -88,8 +83,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.plus_sign)).perform(click());
         onView(withId(R.id.digit_9)).perform(click());
         onView(withId(R.id.square_root_symbol)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -102,8 +95,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.digit_9)).perform(click());
         onView(withId(R.id.square_root_symbol)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -120,8 +111,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.plus_sign)).perform(click());
         onView(withId(R.id.digit_3)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -138,8 +127,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.plus_sign)).perform(click());
         onView(withId(R.id.digit_3)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -153,8 +140,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.equal_sign)).perform(click());
         onView(withId(R.id.digit_7)).perform(click());
         onView(withId(R.id.digit_3)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -165,8 +150,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.digit_7)).perform(click());
         onView(withId(R.id.plus_sign)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -178,8 +161,6 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.multiplication_sign)).perform(click());
         onView(withId(R.id.pi_letter)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
-
-        assertValuesOnDisplays();
     }
 
     @Test
@@ -193,7 +174,5 @@ public class DescriptionDisplayTest {
         onView(withId(R.id.multiplication_sign)).perform(click());
         onView(withId(R.id.digit_3)).perform(click());
         onView(withId(R.id.equal_sign)).perform(click());
-
-        assertValuesOnDisplays();
     }
 }
