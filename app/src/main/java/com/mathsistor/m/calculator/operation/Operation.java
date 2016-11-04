@@ -55,7 +55,7 @@ public abstract class Operation {}
 //        this.supplier = supplier;
 //    }
 //
-//    public double getConstant() {
+//    public double getRandomNumber() {
 //        return constant;
 //    }
 //
@@ -67,7 +67,7 @@ public abstract class Operation {}
 //        return binaryOperator;
 //    }
 //
-//    public DoubleSupplier getSupplier() {
+//    public DoubleSupplier getUnaryOperator() {
 //        return supplier;
 //    }
 //}
