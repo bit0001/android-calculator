@@ -133,6 +133,7 @@
 
             <Button
                 style="@style/constant"
+                android:id="@+id/e_letter"
                 android:text="e" />
 
             <Button
