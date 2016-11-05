@@ -31,10 +31,14 @@ public class VariableTest {
     }
 
     @Test
-    public void test9PlusMEqualsSquareRoot() throws Exception {
+    public void test9PlusMEqualSquareRoot() throws Exception {
         expectedDisplayedResult = "3";
         expectedDisplayedDescription = "\u221a" + "(9+M)=";
 
+        performPlusMEqualSquareRoot();
+    }
+
+    private void performPlusMEqualSquareRoot() {
         onView(withId(R.id.digit_9)).perform(click());
         onView(withId(R.id.plus_sign)).perform(click());
         onView(withId(R.id.get_M)).perform(click());
@@ -43,29 +47,21 @@ public class VariableTest {
     }
 
     @Test
-    public void test9PlusMEqualsSquareRoot7SetM() throws Exception {
+    public void test9PlusMEqualSquareRoot7SetM() throws Exception {
         expectedDisplayedResult = "4";
         expectedDisplayedDescription = "\u221a" + "(9+M)=";
 
-        onView(withId(R.id.digit_9)).perform(click());
-        onView(withId(R.id.plus_sign)).perform(click());
-        onView(withId(R.id.get_M)).perform(click());
-        onView(withId(R.id.equal_sign)).perform(click());
-        onView(withId(R.id.square_root_symbol)).perform(click());
+        performPlusMEqualSquareRoot();
         onView(withId(R.id.digit_7)).perform(click());
         onView(withId(R.id.set_M)).perform(click());
     }
 
     @Test
-    public void test9PlusMEqualsSquareRoot7SetMPlus14Equals() throws Exception {
+    public void test9PlusMEqualSquareRoot7SetMPlus14Equals() throws Exception {
         expectedDisplayedResult = "18";
         expectedDisplayedDescription = "\u221a" + "(9+M)+14=";
 
-        onView(withId(R.id.digit_9)).perform(click());
-        onView(withId(R.id.plus_sign)).perform(click());
-        onView(withId(R.id.get_M)).perform(click());
-        onView(withId(R.id.equal_sign)).perform(click());
-        onView(withId(R.id.square_root_symbol)).perform(click());
+        performPlusMEqualSquareRoot();
         onView(withId(R.id.digit_7)).perform(click());
         onView(withId(R.id.set_M)).perform(click());
         onView(withId(R.id.plus_sign)).perform(click());
