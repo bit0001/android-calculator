@@ -1,9 +1,9 @@
 package com.mathsistor.m.calculator;
 
 import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -111,5 +111,24 @@ public class CalculatorActivity extends AppCompatActivity {
             brain.setInternalProgram(savedProgram);
             updateDisplays();
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void setVariableM(View view) {
+        Button button = (Button) view;
+        String variableName = button.getText().toString().substring(1);
+        brain.setVariableValue(variableName, Double.parseDouble(getDisplayString()));
+        brain.setInternalProgram(new ArrayList<>(brain.getInternalProgram()));
+        userIsInTheMiddleOfTyping = false;
+        updateDisplays();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void getVariableM(View view) {
+        Button button = (Button) view;
+        String variableName = button.getText().toString();
+        brain.setOperand(variableName);
+        userIsInTheMiddleOfTyping = false;
+        updateDisplays();
     }
 }

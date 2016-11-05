@@ -13,6 +13,7 @@ import com.mathsistor.m.calculator.operation.Unary;
 import com.mathsistor.m.calculator.util.Maps;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static com.mathsistor.m.calculator.util.Formatter.betweenParentheses;
 import static com.mathsistor.m.calculator.util.Formatter.getNumberString;
@@ -20,16 +21,19 @@ import static com.mathsistor.m.calculator.util.Formatter.getNumberString;
 
 public class CalculatorBrain {
 
+    private HashMap<String, Double> variableValues;
     private ArrayList<Object> internalProgram;
     private PendingBinaryOperationInfo pending;
     private String description;
     private String previousAppend;
     private String baseDescription;
+    private String previousVariableName;
     private double accumulator;
 
     CalculatorBrain() {
         description = "";
         internalProgram = new ArrayList<>();
+        variableValues = new HashMap<>();
     }
 
     public void setOperand(double operand) {
@@ -54,6 +58,9 @@ public class CalculatorBrain {
 
     private void updateDescription(String symbol) {
         Operation operation = Maps.OPERATIONS.get(symbol);
+
+        String stringToAppend = (previousVariableName != null) ? previousVariableName : getNumberString(accumulator);
+
         if (Constant.class.isInstance(operation)) {
         } else if (Unary.class.isInstance(operation)) {
             if (isPartialResult()) {
@@ -62,22 +69,22 @@ public class CalculatorBrain {
                     description = baseDescription + previousAppend;
                 } else {
                     baseDescription = description;
-                    previousAppend = symbol + betweenParentheses(getNumberString(accumulator));
+                    previousAppend = symbol + betweenParentheses(stringToAppend);
                     description += previousAppend;
                 }
             } else {
-                description = symbol + betweenParentheses(description.equals("") ? getNumberString(accumulator) : description);
+                description = symbol + betweenParentheses(description.equals("") ? stringToAppend : description);
             }
         } else if (Binary.class.isInstance(operation)) {
             if (isPartialResult()) {
                 if (previousAppend == null) {
-                    description += getNumberString(accumulator) + symbol;
+                    description += stringToAppend + symbol;
                 } else {
                     description += symbol;
                     previousAppend = null;
                 }
             } else {
-                description = (description.equals("") ? getNumberString(accumulator) : description) + symbol;
+                description = (description.equals("") ? stringToAppend : description) + symbol;
             }
         } else if (Random.class.isInstance(operation)) {
         } else if (Equal.class.isInstance(operation)) {
@@ -90,8 +97,9 @@ public class CalculatorBrain {
                 return;
             }
 
-            description += getNumberString(accumulator);
+            description += stringToAppend;
         }
+        previousVariableName = null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -141,7 +149,11 @@ public class CalculatorBrain {
             if (Double.class.isInstance(op)) {
                 setOperand((Double) op);
             } else if (String.class.isInstance(op)) {
-                performOperation((String) op);
+                if (Maps.OPERATIONS.get(op) != null) {
+                    performOperation((String) op);
+                } else {
+                    setOperand((String) op);
+                }
             }
         }
     }
@@ -149,7 +161,21 @@ public class CalculatorBrain {
     private void clear() {
         accumulator = 0;
         pending = null;
-        description = "";
         internalProgram.clear();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void setOperand(String variableName) {
+        previousVariableName = variableName;
+        accumulator = variableValues.getOrDefault(variableName, 0.0);
+        internalProgram.add(variableName);
+
+        if (!isPartialResult()) {
+            description = "";
+        }
+    }
+
+    public void setVariableValue(String variableName, double variableValue) {
+        this.variableValues.put(variableName, variableValue);
     }
 }
