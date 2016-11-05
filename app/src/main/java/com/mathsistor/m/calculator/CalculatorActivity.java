@@ -12,6 +12,9 @@ import com.mathsistor.m.calculator.util.Maps;
 
 import java.util.ArrayList;
 
+import static com.mathsistor.m.calculator.util.Formatter.DELETE;
+import static com.mathsistor.m.calculator.util.Formatter.UNDO;
+
 public class CalculatorActivity extends AppCompatActivity {
 
     private boolean userIsInTheMiddleOfTyping;
@@ -19,11 +22,14 @@ public class CalculatorActivity extends AppCompatActivity {
     private CalculatorBrain brain;
     private TextView operation_display;
     private ArrayList<Object> savedProgram;
+    private Button deleteUndoButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculator);
+
+        deleteUndoButton = (Button) findViewById(R.id.delete_undo);
         result_display = (TextView) findViewById(R.id.result_display);
         operation_display = (TextView) findViewById(R.id.operation_display);
         clear();
@@ -34,6 +40,7 @@ public class CalculatorActivity extends AppCompatActivity {
         result_display.setText("0");
         operation_display.setText("");
         userIsInTheMiddleOfTyping = false;
+        deleteUndoButton.setText(UNDO);
     }
 
     public void touchDigit(View view) {
@@ -45,6 +52,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
         result_display.setText(userIsInTheMiddleOfTyping ? getDisplayString() + digit : digit);
         userIsInTheMiddleOfTyping = true;
+        deleteUndoButton.setText(DELETE);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -52,6 +60,7 @@ public class CalculatorActivity extends AppCompatActivity {
         if (userIsInTheMiddleOfTyping) {
             brain.setOperand(Double.parseDouble(getDisplayString()));
             userIsInTheMiddleOfTyping = false;
+            deleteUndoButton.setText(UNDO);
         }
 
         String operator = ((Button) view).getText().toString();
@@ -80,6 +89,7 @@ public class CalculatorActivity extends AppCompatActivity {
         } else {
             result_display.setText("0.");
             userIsInTheMiddleOfTyping = true;
+            deleteUndoButton.setText(DELETE);
         }
     }
 
@@ -91,9 +101,12 @@ public class CalculatorActivity extends AppCompatActivity {
             if (currentText.toString().isEmpty()) {
                 result_display.setText("0");
                 userIsInTheMiddleOfTyping = false;
+                deleteUndoButton.setText(UNDO);
             } else {
                 result_display.setText(currentText.toString());
             }
+        } else {
+
         }
     }
 
@@ -120,6 +133,7 @@ public class CalculatorActivity extends AppCompatActivity {
         brain.setVariableValue(variableName, Double.parseDouble(getDisplayString()));
         brain.setInternalProgram(new ArrayList<>(brain.getInternalProgram()));
         userIsInTheMiddleOfTyping = false;
+        deleteUndoButton.setText(UNDO);
         updateDisplays();
     }
 
@@ -129,6 +143,7 @@ public class CalculatorActivity extends AppCompatActivity {
         String variableName = button.getText().toString();
         brain.setOperand(variableName);
         userIsInTheMiddleOfTyping = false;
+        deleteUndoButton.setText(UNDO);
         updateDisplays();
     }
 }
