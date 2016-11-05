@@ -81,6 +81,7 @@
 
             <Button
                 style="@style/trig"
+                android:id="@+id/cos_button"
                 android:text="cos" />
 
             <Button
