@@ -54,10 +54,12 @@
 
             <Button
                 style="@style/variable"
+                android:id="@+id/set_M"
                 android:text="→M" />
 
             <Button
                 style="@style/variable"
+                android:id="@+id/get_M"
                 android:text="M" />
 
         </LinearLayout>
