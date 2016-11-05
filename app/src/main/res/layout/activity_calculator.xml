@@ -221,10 +221,12 @@
 
             <Button
                 style="@style/digit"
+                android:id="@+id/digit_1"
                 android:text="1" />
 
             <Button
                 style="@style/digit"
+                android:id="@+id/digit_2"
                 android:text="2" />
 
             <Button
@@ -252,6 +254,7 @@
 
             <Button
                 style="@style/cal_button"
+                android:id="@+id/decimal_point"
                 android:onClick="addDecimalPoint"
                 android:text="." />
 
