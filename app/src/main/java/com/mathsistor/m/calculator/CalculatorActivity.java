@@ -79,9 +79,8 @@ public class CalculatorActivity extends AppCompatActivity {
             }
         } else {
             result_display.setText("0.");
+            userIsInTheMiddleOfTyping = true;
         }
-
-        userIsInTheMiddleOfTyping = true;
     }
 
     public void delete(View view) {
