@@ -6,6 +6,10 @@ import com.mathsistor.m.calculator.operation.Equal;
 import com.mathsistor.m.calculator.operation.Operation;
 import com.mathsistor.m.calculator.operation.Random;
 import com.mathsistor.m.calculator.operation.Unary;
+import com.mathsistor.m.calculator.util.Maps;
+
+import static com.mathsistor.m.calculator.util.Formatter.betweenParentheses;
+import static com.mathsistor.m.calculator.util.Formatter.getNumberString;
 
 public class OperationDescription {
     private String previousAppend;
@@ -21,7 +25,7 @@ public class OperationDescription {
     }
 
     public void update(String symbol, Double accumulator, boolean isPartialResult) {
-        Operation operation = Util.OPERATIONS.get(symbol);
+        Operation operation = Maps.OPERATIONS.get(symbol);
         if (Constant.class.isInstance(operation)) {
         } else if (Unary.class.isInstance(operation)) {
             if (isPartialResult) {
@@ -30,22 +34,22 @@ public class OperationDescription {
                     description = baseDescription + previousAppend;
                 } else {
                     baseDescription = description;
-                    previousAppend = symbol + betweenParentheses(getAccumulatorString(accumulator));
+                    previousAppend = symbol + betweenParentheses(getNumberString(accumulator));
                     description += previousAppend;
                 }
             } else {
-                description = symbol + betweenParentheses(description.equals("") ? getAccumulatorString(accumulator) : description);
+                description = symbol + betweenParentheses(description.equals("") ? getNumberString(accumulator) : description);
             }
         } else if (Binary.class.isInstance(operation)) {
             if (isPartialResult) {
                 if (previousAppend == null) {
-                    description += getAccumulatorString(accumulator) + symbol;
+                    description += getNumberString(accumulator) + symbol;
                 } else {
                     description += symbol;
                     previousAppend = null;
                 }
             } else {
-                description = (description.equals("") ? getAccumulatorString(accumulator) : description) + symbol;
+                description = (description.equals("") ? getNumberString(accumulator) : description) + symbol;
             }
         } else if (Random.class.isInstance(operation)) {
         } else if (Equal.class.isInstance(operation)) {
@@ -58,22 +62,8 @@ public class OperationDescription {
                 return;
             }
 
-            description += getAccumulatorString(accumulator);
+            description += getNumberString(accumulator);
         }
-    }
-
-    private String getAccumulatorString(Double accumulator) {
-        if (accumulator == Math.PI) {
-            return  "\u03c0";
-        } else if (accumulator == Math.E) {
-            return  "e";
-        } else {
-            return Util.formatNumber(accumulator);
-        }
-    }
-
-    private String betweenParentheses(String string) {
-        return "(" + string + ")";
     }
 
 }

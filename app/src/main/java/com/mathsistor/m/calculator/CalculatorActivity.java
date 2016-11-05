@@ -4,12 +4,12 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
+import com.mathsistor.m.calculator.util.Maps;
+
 import java.util.ArrayList;
 
 public class CalculatorActivity extends AppCompatActivity {
@@ -65,7 +65,7 @@ public class CalculatorActivity extends AppCompatActivity {
     }
 
     private String getResultFormatted() {
-        return Util.formatNumber(brain.getResult());
+        return Maps.formatNumber(brain.getResult());
     }
 
     public void clearEverything(View view) {

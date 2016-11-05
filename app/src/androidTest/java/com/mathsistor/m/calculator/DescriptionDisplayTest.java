@@ -3,6 +3,8 @@ package com.mathsistor.m.calculator;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.mathsistor.m.calculator.util.Maps;
+
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
@@ -155,7 +157,7 @@ public class DescriptionDisplayTest {
     @Test
     public void test4TimesPiEqual() throws Exception {
         expectedDisplayedDescription = "4" + "\u00d7" + "\u03c0" + "=";
-        expectedDisplayedResult = Util.formatNumber(4 * Math.PI);
+        expectedDisplayedResult = Maps.formatNumber(4 * Math.PI);
 
         onView(withId(R.id.digit_4)).perform(click());
         onView(withId(R.id.multiplication_sign)).perform(click());
@@ -179,7 +181,7 @@ public class DescriptionDisplayTest {
     @Test
     public void testPi() throws Exception {
         expectedDisplayedDescription = "=";
-        expectedDisplayedResult = Util.formatNumber(Math.PI);
+        expectedDisplayedResult = Maps.formatNumber(Math.PI);
 
         onView(withId(R.id.pi_letter)).perform(click());
     }
@@ -187,7 +189,7 @@ public class DescriptionDisplayTest {
     @Test
     public void testPiPi() throws Exception {
         expectedDisplayedDescription = "=";
-        expectedDisplayedResult = Util.formatNumber(Math.PI);
+        expectedDisplayedResult = Maps.formatNumber(Math.PI);
 
         onView(withId(R.id.pi_letter)).perform(click());
         onView(withId(R.id.pi_letter)).perform(click());
@@ -196,7 +198,7 @@ public class DescriptionDisplayTest {
     @Test
     public void testEPi() throws Exception {
         expectedDisplayedDescription = "=";
-        expectedDisplayedResult = Util.formatNumber(Math.PI);
+        expectedDisplayedResult = Maps.formatNumber(Math.PI);
 
         onView(withId(R.id.e_letter)).perform(click());
         onView(withId(R.id.pi_letter)).perform(click());
@@ -205,7 +207,7 @@ public class DescriptionDisplayTest {
     @Test
     public void testPiE() throws Exception {
         expectedDisplayedDescription = "=";
-        expectedDisplayedResult = Util.formatNumber(Math.E);
+        expectedDisplayedResult = Maps.formatNumber(Math.E);
 
         onView(withId(R.id.pi_letter)).perform(click());
         onView(withId(R.id.e_letter)).perform(click());
@@ -215,7 +217,7 @@ public class DescriptionDisplayTest {
     @Test
     public void testConstantBinaryConstant() throws Exception {
         expectedDisplayedDescription = "\u03c0" + "+" + "...";
-        expectedDisplayedResult = Util.formatNumber(Math.PI);
+        expectedDisplayedResult = Maps.formatNumber(Math.PI);
 
         onView(withId(R.id.pi_letter)).perform(click());
         onView(withId(R.id.plus_sign)).perform(click());
@@ -225,7 +227,7 @@ public class DescriptionDisplayTest {
     @Test
     public void testConstantBinaryConstantEqual() throws Exception {
         expectedDisplayedDescription = "\u03c0" + "+" + "\u03c0" + "=";
-        expectedDisplayedResult = Util.formatNumber(Math.PI + Math.PI);
+        expectedDisplayedResult = Maps.formatNumber(Math.PI + Math.PI);
 
         onView(withId(R.id.pi_letter)).perform(click());
         onView(withId(R.id.plus_sign)).perform(click());
@@ -236,7 +238,7 @@ public class DescriptionDisplayTest {
     @Test
     public void testConstantUnary() throws Exception {
         expectedDisplayedDescription = "\u221a" + "(" + "\u03c0" + ")=";
-        expectedDisplayedResult = Util.formatNumber(Math.sqrt(Math.PI));
+        expectedDisplayedResult = Maps.formatNumber(Math.sqrt(Math.PI));
 
         onView(withId(R.id.pi_letter)).perform(click());
         onView(withId(R.id.square_root_symbol)).perform(click());
@@ -245,7 +247,7 @@ public class DescriptionDisplayTest {
     @Test
     public void testConstantUnaryEqual() throws Exception {
         expectedDisplayedDescription = "\u221a" + "(" + "\u03c0" + ")=";
-        expectedDisplayedResult = Util.formatNumber(Math.sqrt(Math.PI));
+        expectedDisplayedResult = Maps.formatNumber(Math.sqrt(Math.PI));
 
         onView(withId(R.id.pi_letter)).perform(click());
         onView(withId(R.id.square_root_symbol)).perform(click());

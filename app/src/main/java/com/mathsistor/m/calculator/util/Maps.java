@@ -1,4 +1,4 @@
-package com.mathsistor.m.calculator;
+package com.mathsistor.m.calculator.util;
 
 import com.mathsistor.m.calculator.operation.Binary;
 import com.mathsistor.m.calculator.operation.Constant;
@@ -10,7 +10,7 @@ import com.mathsistor.m.calculator.operation.Unary;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 
-public abstract class Util {
+public abstract class Maps {
 
     public static HashMap<String, Operation> OPERATIONS;
     public static HashMap<String, String> SYMBOLS;

@@ -10,6 +10,7 @@ import com.mathsistor.m.calculator.operation.Equal;
 import com.mathsistor.m.calculator.operation.Operation;
 import com.mathsistor.m.calculator.operation.Random;
 import com.mathsistor.m.calculator.operation.Unary;
+import com.mathsistor.m.calculator.util.Maps;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,7 @@ public class CalculatorBrain {
     @TargetApi(Build.VERSION_CODES.N)
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void performOperation(String symbol) {
-        Operation operation = Util.OPERATIONS.get(symbol);
+        Operation operation = Maps.OPERATIONS.get(symbol);
         if (operation != null) {
             internalProgram.add(symbol);
             description.update(symbol, accumulator, isPartialResult());
