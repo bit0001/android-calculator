@@ -123,6 +123,7 @@
                 android:backgroundTint="?attr/colorAccent"
                 android:textColor="@android:color/background_light"
                 android:onClick="delete"
+                android:onClick="deleteOrUndo"
                 android:textStyle="normal|bold" />
 
         </LinearLayout>

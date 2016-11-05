@@ -83,7 +83,7 @@ public class CalculatorActivity extends AppCompatActivity {
         }
     }
 
-    public void delete(View view) {
+    public void deleteOrUndo(View view) {
         if (userIsInTheMiddleOfTyping) {
             StringBuilder currentText = new StringBuilder(getDisplayString());
             currentText.deleteCharAt(currentText.length() - 1);
