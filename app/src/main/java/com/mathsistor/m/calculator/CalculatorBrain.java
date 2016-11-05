@@ -14,16 +14,21 @@ import com.mathsistor.m.calculator.util.Maps;
 
 import java.util.ArrayList;
 
+import static com.mathsistor.m.calculator.util.Formatter.betweenParentheses;
+import static com.mathsistor.m.calculator.util.Formatter.getNumberString;
+
 
 public class CalculatorBrain {
 
-    private double accumulator;
-    private PendingBinaryOperationInfo pending;
-    private OperationDescription description;
     private ArrayList<Object> internalProgram;
+    private PendingBinaryOperationInfo pending;
+    private String description;
+    private String previousAppend;
+    private String baseDescription;
+    private double accumulator;
 
     CalculatorBrain() {
-        description = new OperationDescription();
+        description = "";
         internalProgram = new ArrayList<>();
     }
 
@@ -32,7 +37,7 @@ public class CalculatorBrain {
         internalProgram.add(operand);
 
         if (!isPartialResult()) {
-            description = new OperationDescription();
+            description = "";
         }
     }
 
@@ -42,8 +47,50 @@ public class CalculatorBrain {
         Operation operation = Maps.OPERATIONS.get(symbol);
         if (operation != null) {
             internalProgram.add(symbol);
-            description.update(symbol, accumulator, isPartialResult());
+            updateDescription(symbol);
             computeResult(operation);
+        }
+    }
+
+    private void updateDescription(String symbol) {
+        Operation operation = Maps.OPERATIONS.get(symbol);
+        if (Constant.class.isInstance(operation)) {
+        } else if (Unary.class.isInstance(operation)) {
+            if (isPartialResult()) {
+                if (previousAppend != null) {
+                    previousAppend = symbol + betweenParentheses(previousAppend);
+                    description = baseDescription + previousAppend;
+                } else {
+                    baseDescription = description;
+                    previousAppend = symbol + betweenParentheses(getNumberString(accumulator));
+                    description += previousAppend;
+                }
+            } else {
+                description = symbol + betweenParentheses(description.equals("") ? getNumberString(accumulator) : description);
+            }
+        } else if (Binary.class.isInstance(operation)) {
+            if (isPartialResult()) {
+                if (previousAppend == null) {
+                    description += getNumberString(accumulator) + symbol;
+                } else {
+                    description += symbol;
+                    previousAppend = null;
+                }
+            } else {
+                description = (description.equals("") ? getNumberString(accumulator) : description) + symbol;
+            }
+        } else if (Random.class.isInstance(operation)) {
+        } else if (Equal.class.isInstance(operation)) {
+            if (!isPartialResult()) {
+                return;
+            }
+
+            if (previousAppend != null) {
+                previousAppend = null;
+                return;
+            }
+
+            description += getNumberString(accumulator);
         }
     }
 
@@ -76,7 +123,7 @@ public class CalculatorBrain {
     }
 
     public String getDescription() {
-        return description.getDescription();
+        return description;
     }
 
     public boolean isPartialResult() {
