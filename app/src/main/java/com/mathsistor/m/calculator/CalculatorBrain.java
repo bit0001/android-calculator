@@ -178,4 +178,37 @@ public class CalculatorBrain {
     public void setVariableValue(String variableName, double variableValue) {
         this.variableValues.put(variableName, variableValue);
     }
+
+    public void undoOperation() {
+
+        if (internalProgram.size() == 0) {
+            description = "";
+            return;
+        }
+
+        if (internalProgram.size() == 1) {
+            description = "";
+            internalProgram.remove(internalProgram.size() - 1);
+            return;
+        }
+
+        Object lastOperation = Maps.OPERATIONS.get(internalProgram.get(internalProgram.size() - 1));
+
+        if (lastOperation != null) {
+            internalProgram.remove(internalProgram.size() - 1);
+            if (Equal.class.isInstance(lastOperation) || Binary.class.isInstance(lastOperation)) {
+                Object newLast = Maps.OPERATIONS.get(internalProgram.get(internalProgram.size() - 1));
+
+                if (newLast == null) {
+                    internalProgram.remove(internalProgram.size() - 1);
+                }
+            }
+        } else {
+            internalProgram.remove(internalProgram.size() - 1);
+        }
+
+        if (internalProgram.size() == 0) {
+            description = "";
+        }
+    }
 }

@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -93,6 +94,7 @@ public class CalculatorActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void deleteOrUndo(View view) {
         if (userIsInTheMiddleOfTyping) {
             StringBuilder currentText = new StringBuilder(getDisplayString());
@@ -106,7 +108,12 @@ public class CalculatorActivity extends AppCompatActivity {
                 result_display.setText(currentText.toString());
             }
         } else {
-
+            Log.d("before", String.valueOf(brain.getInternalProgram()));
+            brain.undoOperation();
+            Log.d("after", String.valueOf(brain.getInternalProgram()));
+            ArrayList<Object> internalProgram = new ArrayList<>(brain.getInternalProgram());
+            brain.setInternalProgram(internalProgram);
+            updateDisplays();
         }
     }
 
