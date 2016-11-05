@@ -17,8 +17,8 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 public class VariableTest {
 
-    String expectedDisplayedResult;
-    String expectedDisplayedDescription;
+    private String expectedDisplayedResult;
+    private String expectedDisplayedDescription;
 
     @Rule
     public ActivityTestRule<CalculatorActivity> calculatorActivityActivityTestRule =
