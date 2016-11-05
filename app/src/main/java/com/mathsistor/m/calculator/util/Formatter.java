@@ -1,6 +1,9 @@
 package com.mathsistor.m.calculator.util;
 
 public class Formatter {
+    public static final String UNDO = "undo";
+    public static final String DELETE = "\u2190";
+
     public static String betweenParentheses(String string) {
         return "(" + string + ")";
     }
