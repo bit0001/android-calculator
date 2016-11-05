@@ -149,6 +149,7 @@ public class CalculatorBrain {
     private void clear() {
         accumulator = 0;
         pending = null;
+        description = "";
         internalProgram.clear();
     }
 }
